@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cognizant — AI Architecture &amp; Change Delivery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ═══ RESET & SHELL ═══ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden}
+body{font-family:'DM Sans',sans-serif;background:#0d1117}
+#shell{display:flex;flex-direction:column;height:100vh}
+
+/* ═══ TOPBAR ═══ */
+#master-topbar{
+  height:54px;flex-shrink:0;
+  background:linear-gradient(90deg,#0033A0 0%,#1a4dbf 100%);
+  display:flex;align-items:center;padding:0 20px;gap:14px;
+  box-shadow:0 2px 16px rgba(0,51,160,0.35);z-index:200;position:relative;
+}
+.mt-mark{width:32px;height:32px;background:#fff;border-radius:5px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:#0033A0;flex-shrink:0}
+.mt-name{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:#fff;letter-spacing:0.01em}
+.mt-sep{width:1px;height:22px;background:rgba(255,255,255,0.22);flex-shrink:0}
+.mt-subtitle{font-size:12px;color:rgba(255,255,255,0.75);font-weight:400;white-space:nowrap}
+.mt-nav{display:flex;align-items:center;gap:6px;margin-left:auto}
+.nav-btn{
+  height:36px;padding:0 18px;border-radius:7px;
+  border:1.5px solid rgba(255,255,255,0.22);
+  background:rgba(255,255,255,0.08);
+  color:rgba(255,255,255,0.72);
+  font-family:'Syne',sans-serif;font-size:12px;font-weight:700;
+  cursor:pointer;transition:all 0.17s;
+  display:flex;align-items:center;gap:7px;white-space:nowrap;
+}
+.nav-btn:hover{background:rgba(255,255,255,0.16);color:#fff}
+.nav-btn.active{background:#fff;color:#0033A0;border-color:#fff}
+.nb-icon{font-size:14px}
+.nav-divider{width:1px;height:22px;background:rgba(255,255,255,0.18)}
+
+/* ═══ PAGES ═══ */
+#pages{flex:1;overflow:hidden;position:relative}
+.page-section{position:absolute;inset:0;display:none;flex-direction:column}
+.page-section.active{display:flex}
+
+/* ══════════════════════════════════════════════
+   PAGE 1 — PAIN POINTS
+══════════════════════════════════════════════ */
+#page-pain{background:#0d1117;color:#e6edf3}
+#pain-body{flex:1;display:flex;overflow:hidden;min-height:0}
+#persona-col{
+  width:240px;flex-shrink:0;border-right:1px solid #21262d;
+  background:#0d1117;display:flex;flex-direction:column;overflow:hidden
+}
+.pc-header{padding:18px 16px 12px;border-bottom:1px solid #21262d}
+.pc-label{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#e6edf3;margin-bottom:3px}
+.pc-sub{font-size:11px;color:#7d8590}
+.persona-list{flex:1;overflow-y:auto;padding:8px}
+.persona-card{
+  padding:11px 12px;border-radius:8px;cursor:pointer;margin-bottom:4px;
+  border:1.5px solid transparent;transition:all 0.15s;
+  display:flex;align-items:center;gap:10px
+}
+.persona-card:hover{background:#161b22;border-color:#30363d}
+.persona-card.active{background:#161b22;border-color:#0033A0}
+.p-icon{font-size:18px;flex-shrink:0}
+.p-name{font-size:12px;font-weight:600;color:#e6edf3;margin-bottom:2px}
+.p-stage{font-size:10px;color:#7d8590}
+
+#pain-centre{
+  flex:1;overflow-y:auto;padding:24px;
+  display:flex;flex-direction:column;gap:16px
+}
+#idle-hint{
+  flex:1;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:12px;opacity:0.4
+}
+.ih-arrow{font-size:28px;color:#7d8590}
+.ih-text{font-size:13px;color:#7d8590;text-align:center;max-width:280px;line-height:1.5}
+
+.persona-header{
+  background:#161b22;border:1px solid #21262d;border-radius:10px;
+  padding:16px 20px;display:flex;align-items:center;gap:14px;flex-shrink:0
+}
+.ph-icon{font-size:26px}
+.ph-name{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:#e6edf3}
+.ph-desc{font-size:12px;color:#7d8590;margin-top:3px;line-height:1.4}
+
+.pain-cards-grid{display:flex;flex-direction:column;gap:10px}
+.pain-card{
+  background:#161b22;border:1px solid #21262d;border-radius:8px;
+  padding:14px 16px;border-left:3px solid #0033A0
+}
+.pain-stage-label{font-size:10px;font-weight:600;color:#0066cc;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px}
+.pain-card-title{font-size:13px;font-weight:600;color:#e6edf3;margin-bottom:5px}
+.pain-card-text{font-size:12px;color:#8b949e;line-height:1.5}
+.pain-agent-pill{
+  display:inline-flex;align-items:center;gap:5px;
+  margin-top:8px;padding:3px 8px;border-radius:4px;
+  font-size:10px;font-weight:600;
+  background:rgba(167,139,250,0.12);color:#a78bfa;border:1px solid rgba(167,139,250,0.25)
+}
+
+/* SVOT BAR */
+#svot-bar{
+  flex-shrink:0;border-top:1px solid #21262d;background:#0d1117
+}
+#svot-strip{
+  display:flex;align-items:center;gap:14px;padding:10px 20px;
+  cursor:pointer;transition:background 0.15s
+}
+#svot-strip:hover{background:#161b22}
+.svot-icon-wrap{
+  width:32px;height:32px;border-radius:6px;
+  background:linear-gradient(135deg,#0033A0,#1a4dbf);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;flex-shrink:0
+}
+.svot-label-area{flex:1}
+.svot-eyebrow{font-size:10px;color:#7d8590;text-transform:uppercase;letter-spacing:0.06em}
+.svot-headline{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#e6edf3}
+.svot-sub{font-size:11px;color:#7d8590}
+.svot-caret{font-size:16px;color:#7d8590;transition:transform 0.2s}
+#svot-bar.expanded .svot-caret{transform:rotate(180deg)}
+#svot-expanded{display:none;padding:0 20px 16px}
+#svot-bar.expanded #svot-expanded{display:block}
+.svot-inner{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.svc-vs-row{grid-column:1/-1;display:flex;align-items:center;gap:12px;background:#161b22;border:1px solid #21262d;border-radius:8px;padding:12px 16px}
+.svc-old,.svc-new{flex:1}
+.svc-vs-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
+.svc-vs-label.old{color:#f85149}
+.svc-vs-label.new{color:#3fb950}
+.svc-vs-text{font-size:12px;color:#8b949e;line-height:1.4}
+.svc-vs-arrow{font-size:20px;color:#30363d;flex-shrink:0}
+.svc-card{background:#161b22;border:1px solid #21262d;border-radius:8px;padding:12px 14px}
+.svc-card-title{font-size:12px;font-weight:600;color:#e6edf3;margin-bottom:5px}
+.svc-card-text{font-size:11px;color:#8b949e;line-height:1.5}
+
+/* ══════════════════════════════════════════════
+   PAGE 2 — AGENT NETWORK
+══════════════════════════════════════════════ */
+#page-network{background:#0a0e17;flex-direction:column}
+#net-topbar{
+  height:44px;flex-shrink:0;background:#0d1117;border-bottom:1px solid #21262d;
+  display:flex;align-items:center;padding:0 16px;gap:10px
+}
+.net-tab{
+  height:28px;padding:0 14px;border-radius:5px;border:1px solid #30363d;
+  background:transparent;color:#7d8590;font-size:11px;font-weight:600;cursor:pointer;transition:all 0.15s
+}
+.net-tab.active,.net-tab:hover{background:#161b22;color:#e6edf3;border-color:#58a6ff}
+.net-legend{display:flex;align-items:center;gap:14px;margin-left:auto}
+.nl-item{display:flex;align-items:center;gap:5px;font-size:10px;color:#7d8590}
+.nl-dot{width:8px;height:8px;border-radius:50%}
+
+#net-body{flex:1;display:flex;overflow:hidden;min-height:0;position:relative}
+#net-canvas-wrap{width:680px;flex-shrink:0;position:relative;overflow:hidden;background:#0a0e17}
+#net-canvas{position:absolute;inset:0;width:100%;height:100%}
+#net-sidebar{
+  width:180px;flex-shrink:0;border-left:1px solid #21262d;border-right:1px solid #21262d;
+  background:#0d1117;overflow-y:auto;display:flex;flex-direction:column
+}
+#net-detail-panel{
+  flex:1;overflow-y:auto;background:#0d1117;border-left:0;
+  display:flex;flex-direction:column;
+}
+#net-detail-empty{
+  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:10px;opacity:0.35;padding:20px;
+}
+.nde-icon{font-size:24px;color:#7d8590}
+.nde-text{font-size:12px;color:#7d8590;text-align:center;line-height:1.5}
+#net-detail-content{display:none;padding:16px;flex-direction:column;gap:12px}
+#net-detail-content.visible{display:flex}
+.nd-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;margin-bottom:2px}
+.nd-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#e6edf3;line-height:1.3}
+.nd-type-row{display:flex;align-items:center;gap:6px;margin-top:5px;flex-wrap:wrap}
+.nd-type-badge{font-size:9px;padding:2px 7px;border-radius:3px;border:1px solid;font-weight:700}
+.nd-phase-badge{font-size:9px;padding:2px 7px;border-radius:3px;border:1px solid;font-weight:600}
+.nd-divider{height:1px;background:#21262d}
+.nd-section-label{font-size:10px;font-weight:700;color:#7d8590;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px}
+.nd-text{font-size:12px;color:#8b949e;line-height:1.6}
+.nd-io-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.nd-io-box{background:#161b22;border:1px solid #21262d;border-radius:6px;padding:8px 10px}
+.nd-io-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px}
+.nd-io-item{font-size:10px;color:#8b949e;line-height:1.4;margin-bottom:3px;padding-left:10px;position:relative}
+.nd-io-item::before{content:'·';position:absolute;left:2px;color:#7d8590}
+.nd-chips{display:flex;flex-wrap:wrap;gap:4px}
+.nd-chip{font-size:10px;padding:3px 8px;border-radius:4px;border:1px solid #30363d;background:#161b22;color:#8b949e}
+.ns-section{padding:12px}
+.ns-label{font-size:10px;font-weight:700;color:#7d8590;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px}
+.ns-node{
+  padding:8px 10px;border-radius:6px;margin-bottom:4px;cursor:pointer;
+  border:1px solid transparent;transition:all 0.15s;
+  display:flex;align-items:center;gap:8px
+}
+.ns-node:hover{background:#161b22;border-color:#30363d}
+.ns-node.active{background:#161b22;border-color:#0033A0}
+.ns-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.ns-text{font-size:11px;color:#8b949e}
+.ns-divider{height:1px;background:#21262d;margin:4px 0}
+
+#net-drawer{
+  height:120px;flex-shrink:0;overflow:hidden;
+  border-top:1px solid #21262d;background:#0d1117;
+}
+#cd-inner{padding:14px 16px;height:100%;display:flex;flex-direction:column;gap:8px}
+.cd-header{display:flex;align-items:center;gap:10px}
+.cd-title-area{flex:1}
+.cd-label-eyebrow{font-size:10px;color:#7d8590;text-transform:uppercase;letter-spacing:0.05em}
+.cd-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#e6edf3}
+.cd-route{font-size:11px;color:#58a6ff;margin-top:2px}
+.cd-close{background:none;border:1px solid #30363d;border-radius:5px;color:#7d8590;cursor:pointer;padding:4px 8px;font-size:11px}
+.cd-body{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cd-section-label{font-size:10px;font-weight:600;color:#7d8590;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px}
+.cd-text{font-size:11px;color:#8b949e;line-height:1.4}
+
+#timeline-view{
+  display:none;flex:1;overflow-y:auto;padding:16px;
+  flex-direction:column;gap:8px
+}
+#timeline-view.visible{display:flex}
+.tl-phase-header{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;padding:6px 0;margin-top:4px}
+.tl-card{
+  background:#161b22;border:1px solid #21262d;border-radius:7px;
+  padding:10px 12px;cursor:pointer;transition:all 0.15s
+}
+.tl-card:hover{border-color:#30363d}
+.tl-card.selected{border-color:#0033A0}
+.tl-card-title{font-size:12px;font-weight:600;color:#e6edf3;margin-bottom:3px}
+.tl-card-sub{font-size:10px;color:#7d8590;margin-bottom:5px}
+.tl-badges{display:flex;flex-wrap:wrap;gap:4px}
+.tl-badge{font-size:9px;padding:2px 6px;border-radius:3px;border:1px solid;font-weight:600}
+
+/* ══════════════════════════════════════════════
+   PAGE 3 — ARCHITECTURE & ROADMAP
+══════════════════════════════════════════════ */
+#page-arch{background:#0d1117;flex-direction:column}
+#arch-topbar{
+  height:44px;flex-shrink:0;background:#0d1117;border-bottom:1px solid #21262d;
+  display:flex;align-items:center;padding:0 14px;gap:6px
+}
+.arch-tab{
+  height:28px;padding:0 14px;border-radius:5px;
+  border:1px solid #30363d;background:transparent;
+  color:#7d8590;font-size:11px;font-weight:600;cursor:pointer;transition:all 0.15s
+}
+.arch-tab.active,.arch-tab:hover{background:#161b22;color:#e6edf3;border-color:#58a6ff}
+.arch-sep{flex:1}
+#arch-nav-diag,#arch-nav-impl{
+  height:28px;padding:0 14px;border-radius:5px;
+  border:1px solid #30363d;background:transparent;
+  color:#7d8590;font-size:11px;font-weight:600;cursor:pointer;transition:all 0.15s
+}
+#arch-nav-diag.active,#arch-nav-impl.active{background:#0033A0;color:#fff;border-color:#0033A0}
+
+#arch-body{flex:1;overflow:hidden;display:flex;position:relative}
+.arch-page{position:absolute;inset:0;display:none;overflow:hidden}
+.arch-page.active{display:flex}
+#arch-page-impl{overflow:auto}
+
+/* diagram page */
+#arch-page-diag{flex-direction:row}
+#arch-canvas-area{flex:1;overflow:hidden;position:relative}
+.diag-layer{position:absolute;inset:0;display:none;overflow:auto;padding:20px}
+.diag-layer.active{display:block}
+#svg-hub{padding:0}
+#hub-svg{width:100%;height:100%;display:block}
+
+/* tiers layout */
+.tier-section{margin-bottom:16px}
+.tier-label{
+  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;
+  color:#7d8590;padding:6px 12px;margin-bottom:8px;
+  border-left:3px solid #30363d;
+}
+.tier-row{display:flex;flex-wrap:wrap;gap:8px;padding:0 4px}
+.arch-node{
+  padding:9px 13px;border-radius:7px;border:1.5px solid;
+  cursor:pointer;transition:all 0.15s;
+  display:flex;align-items:center;gap:7px;
+  font-size:11px;font-weight:600;
+}
+.arch-node:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,0.4)}
+
+/* knowledge fabric tier */
+.fabric-tier{
+  margin-bottom:16px;
+  background:linear-gradient(135deg,rgba(99,102,241,0.06),rgba(16,185,129,0.06));
+  border:1.5px dashed rgba(99,102,241,0.35);
+  border-radius:10px;padding:12px 14px;
+}
+.fabric-tier-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.fabric-tier-icon{font-size:16px}
+.fabric-tier-title{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:#818cf8}
+.fabric-tier-subtitle{font-size:10px;color:#7d8590;margin-left:auto}
+.fabric-sublayers{display:flex;gap:8px;flex-wrap:wrap}
+.fabric-sublayer{
+  flex:1;min-width:160px;
+  background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.2);
+  border-radius:7px;padding:10px 12px;
+}
+.fsl-label{font-size:10px;font-weight:700;color:#818cf8;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px}
+.fsl-title{font-size:12px;font-weight:600;color:#e6edf3;margin-bottom:3px}
+.fsl-text{font-size:10px;color:#7d8590;line-height:1.4}
+.fsl-agents{font-size:9px;color:#a78bfa;margin-top:5px;font-weight:600}
+
+/* principles tier */
+.principles-tier{
+  margin-bottom:16px;
+  background:linear-gradient(135deg,rgba(251,191,36,0.06),rgba(245,158,11,0.04));
+  border:1.5px solid rgba(251,191,36,0.3);
+  border-radius:10px;padding:12px 14px;
+}
+.principles-tier-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.principles-tier-icon{font-size:16px}
+.principles-tier-title{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;color:#fbbf24}
+.principles-tier-subtitle{font-size:10px;color:#7d8590;margin-left:auto}
+.principles-content{display:flex;gap:8px;align-items:stretch}
+.principles-lib{
+  flex:1;background:rgba(251,191,36,0.08);border:1px solid rgba(251,191,36,0.25);
+  border-radius:7px;padding:10px 12px;
+}
+.pl-label{font-size:10px;font-weight:700;color:#fbbf24;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px}
+.pl-title{font-size:12px;font-weight:600;color:#e6edf3;margin-bottom:3px}
+.pl-text{font-size:10px;color:#7d8590;line-height:1.4}
+.pl-owner{font-size:9px;color:#fbbf24;margin-top:5px;font-weight:600}
+.principles-flows{display:flex;flex-direction:column;justify-content:center;gap:6px;padding:0 8px}
+.pf-arrow{font-size:11px;color:#7d8590;white-space:nowrap;text-align:center}
+.principles-feedback{
+  flex:1;background:rgba(251,191,36,0.05);border:1px dashed rgba(251,191,36,0.2);
+  border-radius:7px;padding:10px 12px;
+}
+.pfb-label{font-size:10px;font-weight:700;color:#d97706;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px}
+.pfb-title{font-size:12px;font-weight:600;color:#e6edf3;margin-bottom:3px}
+.pfb-text{font-size:10px;color:#7d8590;line-height:1.4}
+.pfb-agent{font-size:9px;color:#a78bfa;margin-top:5px;font-weight:600}
+
+/* detail panel */
+#arch-detail-panel{
+  width:0;flex-shrink:0;overflow:hidden;
+  border-left:1px solid #21262d;background:#0d1117;
+  transition:width 0.2s ease;display:flex;flex-direction:column
+}
+#arch-detail-panel.visible{width:280px}
+.adp-header{padding:14px 14px 10px;border-bottom:1px solid #21262d;display:flex;align-items:flex-start;gap:8px}
+.adp-close{background:none;border:1px solid #30363d;border-radius:4px;color:#7d8590;cursor:pointer;padding:3px 7px;font-size:11px;flex-shrink:0}
+.adp-category{font-size:10px;font-weight:700;color:#7d8590;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px}
+.adp-name{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:#e6edf3}
+.adp-body{flex:1;overflow-y:auto;padding:12px 14px;display:flex;flex-direction:column;gap:12px}
+.adp-section-label{font-size:10px;font-weight:700;color:#7d8590;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px}
+.adp-text{font-size:12px;color:#8b949e;line-height:1.5}
+.adp-conn-list{display:flex;flex-wrap:wrap;gap:5px}
+.adp-conn-chip{
+  padding:3px 8px;border-radius:4px;font-size:10px;font-weight:600;
+  background:#161b22;border:1px solid #30363d;color:#8b949e;
+  cursor:pointer;transition:all 0.12s
+}
+.adp-conn-chip:hover{border-color:#0033A0;color:#e6edf3}
+
+/* roadmap page */
+#arch-page-impl{overflow:auto}
+.impl-grid{padding:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-content:start;width:100%}
+.phase-col{background:#161b22;border:1px solid #21262d;border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.phase-num{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em}
+.phase-name{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:#e6edf3}
+.phase-range{font-size:11px;color:#7d8590}
+.phase-desc{font-size:11px;color:#8b949e;line-height:1.5;padding-top:4px;border-top:1px solid #21262d}
+.uc-list{display:flex;flex-direction:column;gap:6px}
+.uc-card{background:#0d1117;border:1px solid #21262d;border-left:3px solid;border-radius:6px;padding:9px 10px;cursor:pointer;transition:all 0.12s}
+.uc-card:hover{border-color:#30363d}
+.uc-card-code{font-size:10px;font-weight:700;margin-bottom:2px}
+.uc-card-name{font-size:11px;color:#e6edf3;font-weight:600;margin-bottom:4px}
+.uc-card-type{font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;border:1px solid;display:inline-block}
+.phase-deps{border-top:1px solid #21262d;padding-top:8px}
+.deps-label{font-size:10px;font-weight:700;color:#7d8590;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px}
+.dep-item{display:flex;align-items:flex-start;gap:6px;margin-bottom:4px}
+.dep-bullet{width:5px;height:5px;border-radius:50%;margin-top:4px;flex-shrink:0}
+.dep-item span{font-size:10px;color:#7d8590;line-height:1.4}
+</style>
+</head>
+<body>
+<div id="shell">
+
+  <!-- TOPBAR -->
+  <div id="master-topbar">
+    <img src="data:image/png;base64,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" alt="Cognizant" style="height:32px;object-fit:contain;flex-shrink:0">
+    <div class="mt-sep"></div>
+    <div class="mt-subtitle">AI-enabled Architecture &amp; Change Delivery · Nationwide Workshop</div>
+    <nav class="mt-nav">
+      <button class="nav-btn active" id="nav-pain" onclick="showPage(&#39;pain&#39;)">
+        <span class="nb-icon">⚡</span> Pain Points
+      </button>
+      <div class="nav-divider"></div>
+      <button class="nav-btn" id="nav-network" onclick="showPage(&#39;network&#39;)">
+        <span class="nb-icon">◉</span> Agent Network
+      </button>
+      <div class="nav-divider"></div>
+      <button class="nav-btn" id="nav-arch" onclick="showPage(&#39;arch&#39;)">
+        <span class="nb-icon">⬡</span> Architecture &amp; Roadmap
+      </button>
+    </nav>
+  </div>
+
+  <!-- PAGES -->
+  <div id="pages">
+
+    <!-- PAGE 1: PAIN POINTS -->
+    <section class="page-section active" id="page-pain">
+      <div id="pain-body">
+        <div id="persona-col">
+          <div class="pc-header">
+            <div class="pc-label">Lifecycle personas</div>
+            <div class="pc-sub">Select a role to explore its pain</div>
+          </div>
+          <div class="persona-list" id="persona-list"><div class="persona-card"><div class="p-icon">📋</div><div><div class="p-name">Business Analyst</div><div class="p-stage">Goal Formation → Requirements</div></div></div><div class="persona-card"><div class="p-icon">🏗️</div><div><div class="p-name">Solution Architect</div><div class="p-stage">Design → Governance</div></div></div><div class="persona-card"><div class="p-icon">⚖️</div><div><div class="p-name">Governance Committee</div><div class="p-stage">Review → Approval</div></div></div><div class="persona-card"><div class="p-icon">📦</div><div><div class="p-name">Procurement Manager</div><div class="p-stage">Procurement</div></div></div><div class="persona-card"><div class="p-icon">🔧</div><div><div class="p-name">Implementation Partner</div><div class="p-stage">Implementation</div></div></div><div class="persona-card"><div class="p-icon">📡</div><div><div class="p-name">Operations Engineer</div><div class="p-stage">Operations</div></div></div></div>
+        </div>
+        <div id="pain-centre">
+          <div id="idle-hint">
+            <div class="ih-arrow">←</div>
+            <div class="ih-text">Select a persona on the left to explore the problems they face across the change delivery lifecycle</div>
+          </div>
+        </div>
+      </div>
+      <div id="svot-bar">
+        <div id="svot-strip" onclick="toggleSvot()">
+          <div class="svot-icon-wrap">⚡</div>
+          <div class="svot-label-area">
+            <div class="svot-eyebrow">The underlying problem · click to expand</div>
+            <div class="svot-headline">Single Version of Truth</div>
+            <div class="svot-sub">Decisions made on bad information · designs built on stale data · governance documents that don't reflect what exists</div>
+          </div>
+          <div class="svot-caret">⌃</div>
+        </div>
+        <div id="svot-expanded">
+          <div class="svot-inner">
+            <div class="svc-vs-row">
+              <div class="svc-old">
+                <div class="svc-vs-label old">The legacy assumption</div>
+                <div class="svc-vs-text">Store &amp; Retrieve — find the right repository, keep it populated, draw from a single source</div>
+              </div>
+              <div class="svc-vs-arrow">→</div>
+              <div class="svc-new">
+                <div class="svc-vs-label new">The alternative</div>
+                <div class="svc-vs-text">Observe, Reconcile &amp; Surface on Demand — accuracy becomes a behaviour, not a location</div>
+              </div>
+            </div>
+            <div class="svc-card">
+              <div class="svc-card-title">A repository cannot keep pace with a changing estate</div>
+              <div class="svc-card-text">By the time anything is written to a CMDB or EA tool, it is already partially stale. The "single version" becomes the version of yesterday. The estate changes continuously.</div>
+            </div>
+            <div class="svc-card">
+              <div class="svc-card-title">Architecture truth is multi-dimensional</div>
+              <div class="svc-card-text">What is true for a solution architect designing an integration is a different slice of truth than what is true for an operations engineer responding to an incident.</div>
+            </div>
+            <div class="svc-card">
+              <div class="svc-card-title">Gatekeeping is the bottleneck</div>
+              <div class="svc-card-text">The "single version" model requires humans to approve updates, maintain the model, and police accuracy. This creates the bottleneck it was meant to solve.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 2: AGENT NETWORK -->
+    <section class="page-section" id="page-network">
+      <div id="net-topbar">
+        <button class="net-tab active" id="btn-graph" onclick="netSetView(&#39;graph&#39;)">Graph View</button>
+        <button class="net-tab" id="btn-timeline" onclick="netSetView(&#39;timeline&#39;)">Timeline View</button>
+        <div class="net-legend">
+          <div class="nl-item"><div class="nl-dot" style="background:#a78bfa"></div>Agent</div>
+          <div class="nl-item"><div class="nl-dot" style="background:#34d399"></div>Platform</div>
+          <div class="nl-item"><div class="nl-dot" style="background:#60a5fa"></div>User</div>
+          <div class="nl-item"><div class="nl-dot" style="background:#f59e0b"></div>Data</div>
+        </div>
+      </div>
+      <div id="net-body">
+        <div id="net-canvas-wrap">
+          <canvas id="net-canvas"></canvas>
+          <div id="timeline-view"></div>
+        </div>
+        <div id="net-sidebar">
+          <div class="ns-section">
+            <div class="ns-label">Agents</div>
+            <div id="ns-agents"></div>
+          </div>
+          <div class="ns-divider"></div>
+          <div class="ns-section">
+            <div class="ns-label">Platforms</div>
+            <div id="ns-platforms"></div>
+          </div>
+        </div>
+        <div id="net-detail-panel">
+          <div id="net-detail-empty">
+            <div class="nde-icon">◉</div>
+            <div class="nde-text">Click an agent or platform node to explore its role in the architecture</div>
+          </div>
+          <div id="net-detail-content"></div>
+        </div>
+      </div>
+      <div id="net-drawer">
+        <div id="cd-inner">
+          <div class="cd-header">
+            <div class="cd-title-area">
+              <div class="cd-label-eyebrow">Connection</div>
+              <div class="cd-title" id="cd-title">—</div>
+              <div class="cd-route" id="cd-route">Click a line between nodes to inspect the data flow</div>
+            </div>
+          </div>
+          <div class="cd-body" id="cd-body">
+            <div style="opacity:0.35;font-size:11px;color:#7d8590;padding-top:4px">Input will appear here</div>
+            <div style="opacity:0.35;font-size:11px;color:#7d8590;padding-top:4px">Output will appear here</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 3: ARCHITECTURE & ROADMAP -->
+    <section class="page-section" id="page-arch">
+      <div id="arch-topbar">
+        <button class="arch-tab active" id="arch-tab-tiers" onclick="setArchLayout(&#39;tiers&#39;,event)">Layered Tiers</button>
+        <button class="arch-tab" id="arch-tab-flow" onclick="setArchLayout(&#39;flow&#39;,event)">Lifecycle Flow</button>
+        <button class="arch-tab" id="arch-tab-hub" onclick="setArchLayout(&#39;hub&#39;,event)">Hub &amp; Spoke</button>
+        <div class="arch-sep"></div>
+        <button id="arch-nav-diag" class="active" onclick="setArchPage(&#39;diag&#39;)">Diagram</button>
+        <button id="arch-nav-impl" onclick="setArchPage(&#39;impl&#39;)">Roadmap</button>
+      </div>
+      <div id="arch-body">
+        <div class="arch-page active" id="arch-page-diag">
+          <div id="arch-canvas-area">
+            <div class="diag-layer active" id="svg-tiers"></div>
+            <div class="diag-layer" id="svg-flow"></div>
+            <div class="diag-layer" id="svg-hub" style="padding:0"><svg id="hub-svg"></svg></div>
+          </div>
+          <div id="arch-detail-panel">
+            <div class="adp-header">
+              <button class="adp-close" onclick="archCloseDetail()">✕</button>
+              <div>
+                <div class="adp-category" id="adp-category"></div>
+                <div class="adp-name" id="adp-name"></div>
+              </div>
+            </div>
+            <div class="adp-body" id="adp-body"></div>
+          </div>
+        </div>
+        <div class="arch-page" id="arch-page-impl"></div>
+      </div>
+    </section>
+
+  </div><!-- #pages -->
+</div><!-- #shell -->
+
+<script>
+// ════════════════════════════════════════════════════════════
+// DATA — PERSONAS & PAIN POINTS
+// ════════════════════════════════════════════════════════════
+const PERSONAS = [
+  { id:'ba', icon:'📋', name:'Business Analyst', stage:'Goal Formation → Requirements',
+    desc:'Owns requirements capture and stakeholder alignment.',
+    pains:[
+      { stage:'Goal Formation', title:'Vague business objectives', text:'Goals are rarely well-formed or measurable. The BA inherits ambiguity from the business case and is expected to turn it into structured requirements.', agent:'UC-01 Goal Formation Coach' },
+      { stage:'Requirements', title:'Interpretation burden', text:'Requirements are written for humans, not systems. NFRs are frequently missing or vague. The SA is left to interpret intent rather than act on clear inputs.', agent:'UC-02 Requirements Quality Gate' },
+      { stage:'Traceability', title:'No visibility of downstream impact', text:'When requirements change mid-delivery, BAs rarely know how far the ripple travels. Impact is discovered late, when it\'s expensive.', agent:'UC-03 Traceability Fabric' }
+    ]
+  },
+  { id:'sa', icon:'🏗️', name:'Solution Architect', stage:'Design → Governance',
+    desc:'Leads solution design, applies principles, and owns architecture decisions.',
+    pains:[
+      { stage:'Architecture Discovery', title:'Stale estate documentation', text:'Architects rely on documentation that is often months out of date. CMDB entries don\'t reflect what\'s actually running in production. Discovery becomes archaeology.', agent:'UC-04 Estate Discovery Agent' },
+      { stage:'Design', title:'Principles applied inconsistently', text:'Architecture principles exist but are inconsistently applied, particularly under time pressure. Violations accumulate as technical debt.', agent:'UC-05 Design Advisory Agent' },
+      { stage:'Governance', title:'Document production bottleneck', text:'Architects spend significant time writing governance documents — security, application, data, infrastructure — each to a different template, for a different committee.', agent:'UC-06 Document Generation Agent' }
+    ]
+  },
+  { id:'gov', icon:'⚖️', name:'Governance Committee', stage:'Review → Approval',
+    desc:'Reviews and approves architecture designs before implementation.',
+    pains:[
+      { stage:'Governance Review', title:'Reviewing presentation, not fact', text:'Committees assess document quality and completeness, but cannot easily verify whether the design reflects the actual estate. Approval is based on a narrative, not a verified state.', agent:'UC-07 Governance Verification Agent' },
+      { stage:'Principles', title:'Principles not systematically enforced', text:'Architecture principles are owned by governance but checked inconsistently. There is no automated signal when a design violates a principle before it reaches review.', agent:'UC-07 Governance Verification Agent' },
+      { stage:'Cross-domain', title:'Domain silos obscure conflicts', text:'Security, application, data, and infrastructure documents are reviewed by different people. Cross-domain conflicts surface late or not at all.', agent:'UC-07 Governance Verification Agent' }
+    ]
+  },
+  { id:'pm', icon:'📦', name:'Procurement Manager', stage:'Procurement',
+    desc:'Owns the RFP and supplier evaluation process.',
+    pains:[
+      { stage:'Procurement', title:'Requirements don\'t survive translation', text:'By the time goals become RFP requirements, traceability is lost. Internal IT teams reinterpret the original intent, often introducing contradictions.', agent:'UC-08 Procurement Intelligence Agent' },
+      { stage:'Procurement', title:'Supplier responses are hard to evaluate', text:'Evaluating whether a supplier response actually addresses the underlying need — not just the stated requirement — requires deep reading and architecture expertise most procurement teams don\'t have.', agent:'UC-08 Procurement Intelligence Agent' }
+    ]
+  },
+  { id:'ip', icon:'🔧', name:'Implementation Partner', stage:'Implementation',
+    desc:'External partner responsible for building and testing the approved solution.',
+    pains:[
+      { stage:'Implementation', title:'Design assumptions don\'t match reality', text:'Workarounds found during build are rarely fed back into architecture documentation or CMDB. Each delivery cycle adds invisible technical debt.', agent:'UC-09 Drift Detection Agent' },
+      { stage:'Implementation', title:'Unknown unknowns surface mid-delivery', text:'Dependencies that weren\'t in the design surface during implementation. Re-work and re-design follow, but approvals aren\'t refreshed.', agent:'UC-04 Estate Discovery Agent' }
+    ]
+  },
+  { id:'ops', icon:'📡', name:'Operations Engineer', stage:'Operations',
+    desc:'Monitors, maintains, and responds to incidents in the live estate.',
+    pains:[
+      { stage:'Operations', title:'Incidents lack business context', text:'Monitoring alerts fire against CIs but don\'t explain business process impact. Engineers can\'t quickly assess whether an alert matters to a critical service.', agent:'UC-10 Operational Intelligence Agent' },
+      { stage:'Operations', title:'CMDB doesn\'t reflect live topology', text:'Incident response depends on accurate dependency maps. When CMDB lags behind reality, remediation is slower and blast radius is harder to estimate.', agent:'UC-04 Estate Discovery Agent' }
+    ]
+  }
+];
+
+// ════════════════════════════════════════════════════════════
+// DATA — AGENT NETWORK
+// ════════════════════════════════════════════════════════════
+const NET_NODES = {
+  uc01:{ id:'uc01', label:'UC-01\nGoal Formation Coach', type:'AGENT', color:'#a78bfa', phase:1 },
+  uc02:{ id:'uc02', label:'UC-02\nRequirements Quality Gate', type:'AGENT', color:'#a78bfa', phase:1 },
+  uc03:{ id:'uc03', label:'UC-03\nTraceability Fabric', type:'AGENT', color:'#a78bfa', phase:1 },
+  uc04:{ id:'uc04', label:'UC-04\nEstate Discovery', type:'AGENT', color:'#a78bfa', phase:2 },
+  uc05:{ id:'uc05', label:'UC-05\nDesign Advisory', type:'AGENT', color:'#a78bfa', phase:2 },
+  uc06:{ id:'uc06', label:'UC-06\nDocument Generation', type:'AGENT', color:'#a78bfa', phase:2 },
+  uc07:{ id:'uc07', label:'UC-07\nGovernance Verification', type:'AGENT', color:'#a78bfa', phase:3 },
+  uc08:{ id:'uc08', label:'UC-08\nProcurement Intelligence', type:'AGENT', color:'#a78bfa', phase:3 },
+  uc09:{ id:'uc09', label:'UC-09\nDrift Detection', type:'AGENT', color:'#a78bfa', phase:4 },
+  uc10:{ id:'uc10', label:'UC-10\nOperational Intelligence', type:'AGENT', color:'#a78bfa', phase:4 },
+  snow:{ id:'snow', label:'ServiceNow', type:'PLATFORM', color:'#34d399', phase:0 },
+  dt:  { id:'dt',   label:'Dynatrace', type:'PLATFORM', color:'#34d399', phase:0 },
+  llm: { id:'llm',  label:'LLM API', type:'PLATFORM', color:'#34d399', phase:0 },
+  jira:{ id:'jira', label:'Jira / Confluence', type:'PLATFORM', color:'#34d399', phase:0 },
+  sp:  { id:'sp',   label:'SharePoint', type:'PLATFORM', color:'#34d399', phase:0 }
+};
+
+const NET_CONNECTIONS = [
+  { from:'uc01', to:'uc02', label:'Goal statements', input:'Structured goal statements with measurability criteria', output:'Quality-gated requirements with goal linkage' },
+  { from:'uc02', to:'uc03', label:'Requirements', input:'Quality-assessed requirements', output:'Traceability matrix requirements layer populated' },
+  { from:'uc03', to:'uc05', label:'Traceability context', input:'Requirements traceability chain', output:'Design decisions anchored to traceable requirements' },
+  { from:'uc03', to:'uc06', label:'Traceability for docs', input:'Live traceability matrix', output:'Governance docs with traceable design rationale' },
+  { from:'uc04', to:'uc05', label:'Estate map', input:'Accurate current-state estate map', output:'Design options informed by real estate' },
+  { from:'uc05', to:'uc06', label:'Design decisions', input:'Structured design outputs and rationale', output:'Drafted architecture documents' },
+  { from:'uc05', to:'uc08', label:'Approved design', input:'Architecture decisions and constraints', output:'RFP requirements validated against design intent' },
+  { from:'uc06', to:'uc07', label:'Generated docs', input:'Complete governance document set', output:'Pre-review compliance report and exceptions' },
+  { from:'uc07', to:'uc08', label:'Verified docs', input:'Pre-screened governance documents', output:'RFP coherence against approved design' },
+  { from:'uc09', to:'uc04', label:'Drift events', input:'Topology change events from deployment', output:'Updated estate map and CMDB discrepancy flags' },
+  { from:'uc10', to:'snow', label:'Enriched incidents', input:'Dynatrace alerts with business context', output:'ITSM tickets with impact assessment' },
+  { from:'dt',   to:'uc04', label:'Live topology', input:'Real-time infrastructure telemetry', output:'Accurate estate map' },
+  { from:'dt',   to:'uc09', label:'Telemetry', input:'Deployment events and topology changes', output:'Drift detection signals' },
+  { from:'dt',   to:'uc10', label:'Alerts', input:'Infrastructure and application alerts', output:'Business-impact-enriched incidents' },
+  { from:'snow', to:'uc04', label:'CMDB data', input:'CI records and relationships', output:'Reconciled estate map with discrepancy report' },
+  { from:'llm',  to:'uc01', label:'Reasoning', input:'Business case text', output:'Structured goal statements' },
+  { from:'llm',  to:'uc02', label:'Reasoning', input:'Requirements documents', output:'Quality report with ambiguity flags' },
+  { from:'llm',  to:'uc05', label:'Reasoning', input:'Requirements and estate data', output:'Design options with principle compliance' },
+  { from:'llm',  to:'uc06', label:'Generation', input:'Structured design data', output:'Governance document drafts' },
+  { from:'llm',  to:'uc07', label:'Analysis', input:'Governance documents', output:'Pre-review report and exceptions list' },
+  { from:'jira', to:'uc02', label:'Requirements source', input:'Jira epics and stories', output:'Quality-assessed requirements' },
+  { from:'jira', to:'uc03', label:'Traceability store', input:'Requirements and task data', output:'Live traceability matrix links' },
+  { from:'sp',   to:'uc06', label:'Templates', input:'Governance document templates', output:'Populated governance documents' },
+  { from:'sp',   to:'uc07', label:'Doc source', input:'Generated documents on SharePoint', output:'Completeness and compliance report' }
+];
+
+const NET_PHASES = [
+  { num:1, name:'Foundation', color:'#a78bfa', ids:['uc01','uc02','uc03'] },
+  { num:2, name:'Estate & Design', color:'#60a5fa', ids:['uc04','uc05','uc06'] },
+  { num:3, name:'Governance & Procurement', color:'#f59e0b', ids:['uc07','uc08'] },
+  { num:4, name:'Live Ops', color:'#34d399', ids:['uc09','uc10'] }
+];
+
+// ════════════════════════════════════════════════════════════
+// DATA — ARCHITECTURE COMPONENTS
+// ════════════════════════════════════════════════════════════
+const ARCH_COMPONENTS = {
+  // USERS
+  u_sa:{ id:'u_sa', cat:'USER', label:'Solution Architect', icon:'👤', color:'#60a5fa',
+    desc:'Leads solution design, applies architecture principles, and owns design decisions.',
+    role:'Receives AI-generated design recommendations, estate maps, and governance document drafts.',
+    connects:['a_uc4','a_uc5','a_uc6'] },
+  u_ba:{ id:'u_ba', cat:'USER', label:'Business Analyst', icon:'👤', color:'#60a5fa',
+    desc:'Captures and writes business requirements and manages stakeholder needs.',
+    role:'Primary author of requirements fed into UC-01 and UC-02.',
+    connects:['a_uc1','a_uc2','a_uc3'] },
+  u_gov:{ id:'u_gov', cat:'USER', label:'Architecture Governance Committee', icon:'👤', color:'#fbbf24',
+    desc:'Owns architecture principles and approves governance submissions. Receives evolution proposals from UC-07.',
+    role:'Authoritative owner of the Architecture Principles Library. Receives principles conflict reports and evolution proposals from UC-07.',
+    connects:['g_principles','a_uc7'] },
+  u_pm:{ id:'u_pm', cat:'USER', label:'Procurement Manager', icon:'👤', color:'#60a5fa',
+    desc:'Owns the RFP and supplier evaluation process.',
+    role:'Uses UC-08 Procurement Intelligence to validate RFP coherence.',
+    connects:['a_uc8'] },
+  u_ip:{ id:'u_ip', cat:'USER', label:'Implementation Partner', icon:'👤', color:'#60a5fa',
+    desc:'External delivery partner responsible for building and testing the approved solution.',
+    role:'Works against the approved design baseline. Drift events from UC-09 are raised as ServiceNow tasks.',
+    connects:['a_uc9'] },
+  u_ops:{ id:'u_ops', cat:'USER', label:'Operations Engineer', icon:'👤', color:'#60a5fa',
+    desc:'Monitors, maintains, and responds to incidents in the live estate.',
+    role:'Receives business-impact-aware incident alerts and remediation suggestions from UC-10.',
+    connects:['a_uc10','p_dt'] },
+  // INTERFACES
+  i_portal:{ id:'i_portal', cat:'INTERFACE', label:'Requirements Portal', icon:'⬡', color:'#2dd4bf',
+    desc:'Structured intake interface for requirements in a format consumable by the quality gate agent.',
+    role:'Replaces unstructured spreadsheet submission. Feeds UC-02 directly.',
+    connects:['a_uc2','u_ba'] },
+  i_browser:{ id:'i_browser', cat:'INTERFACE', label:'AI Browser Agent', icon:'⬡', color:'#2dd4bf',
+    desc:'Browser-based AI interface providing real-time coaching on goals and requirements.',
+    role:'Surfaces UC-01 capability inline, without tool switching.',
+    connects:['a_uc1','u_ba','u_sa'] },
+  i_ea:{ id:'i_ea', cat:'INTERFACE', label:'EA Tool', icon:'⬡', color:'#2dd4bf',
+    desc:'Enterprise architecture modelling tool. Repository of architecture patterns and technology roadmaps.',
+    role:'Read by UC-04 for estate data. UC-05 reads principles and patterns from here.',
+    connects:['a_uc4','a_uc5','g_principles'] },
+  // GOVERNANCE LAYER
+  g_principles:{ id:'g_principles', cat:'GOVERNANCE', label:'Architecture Principles Library', icon:'⚖', color:'#fbbf24',
+    desc:'Nationwide\'s authoritative set of EA principles, patterns, and standards. Owned by the Architecture Governance Committee. Agents read from it; they cannot write to it.',
+    role:'Read by UC-05 (design options must comply). Validated against by UC-07 (conflicts flagged, evolution proposals generated back to governance committee).',
+    connects:['a_uc5','a_uc7','u_gov','i_ea'] },
+  // AGENTS
+  a_uc1:{ id:'a_uc1', cat:'AGENT', label:'UC-01 Goal Formation Coach', icon:'◉', color:'#a78bfa',
+    desc:'Advisory agent coaching business case authors toward well-formed, measurable goal statements.',
+    role:'First intervention in the lifecycle. Errors here compound through all downstream stages.',
+    connects:['p_llm','i_browser','a_uc2'] },
+  a_uc2:{ id:'a_uc2', cat:'AGENT', label:'UC-02 Requirements Quality Gate', icon:'◉', color:'#a78bfa',
+    desc:'Advisory agent analysing requirements for ambiguity, NFR gaps, and contradictions.',
+    role:'Produces a quality report and coaches BAs toward resolution before handoff to architects.',
+    connects:['p_llm','p_jira','i_portal','a_uc3'] },
+  a_uc3:{ id:'a_uc3', cat:'AGENT', label:'UC-03 Traceability Fabric', icon:'◉', color:'#a78bfa',
+    desc:'Hybrid automation maintaining live traceability from goals through to operational CIs. Flags broken links.',
+    role:'Underpins all downstream use cases. The connective tissue of the Knowledge Fabric.',
+    connects:['p_jira','p_snow','p_sharepoint','a_uc5','a_uc6','kf_trace'] },
+  a_uc4:{ id:'a_uc4', cat:'AGENT', label:'UC-04 Estate Discovery Agent', icon:'◉', color:'#a78bfa',
+    desc:'Autonomous agent querying live monitoring and CMDB to produce an accurate, current estate map.',
+    role:'Resolves the stale CMDB problem. Continuously reconciles Dynatrace topology against ServiceNow records.',
+    connects:['p_dt','p_snow','i_ea','a_uc5','kf_estate'] },
+  a_uc5:{ id:'a_uc5', cat:'AGENT', label:'UC-05 Design Advisory Agent', icon:'◉', color:'#a78bfa',
+    desc:'Advisory agent applying architecture principles to requirements and estate data to suggest design options.',
+    role:'Reads from the Architecture Principles Library to validate compliance. Flags violations before they reach governance.',
+    connects:['p_llm','i_ea','g_principles','a_uc6','a_uc8'] },
+  a_uc6:{ id:'a_uc6', cat:'AGENT', label:'UC-06 Document Generation Agent', icon:'◉', color:'#a78bfa',
+    desc:'Autonomous agent assembling governance documents from structured design data — eliminating manual authoring.',
+    role:'Produces security, application, data, and infrastructure documents from verified structured data.',
+    connects:['p_llm','p_sharepoint','a_uc7','kf_docs'] },
+  a_uc7:{ id:'a_uc7', cat:'AGENT', label:'UC-07 Governance Verification Agent', icon:'◉', color:'#a78bfa',
+    desc:'Advisory agent pre-screening governance documents against architecture principles, standards, and regulatory frameworks. Produces a principles conflict report and suggests evolution proposals back to the governance committee.',
+    role:'Shifts governance review from reading documents to reviewing exceptions. Also validates design compliance against the Architecture Principles Library and surfaces proposals when principles appear outdated or routinely overridden.',
+    connects:['p_llm','p_sharepoint','g_principles','u_gov','a_uc8'] },
+  a_uc8:{ id:'a_uc8', cat:'AGENT', label:'UC-08 Procurement Intelligence Agent', icon:'◉', color:'#a78bfa',
+    desc:'Advisory agent validating RFP requirements against original business goals and evaluating supplier responses.',
+    role:'Bridges governance and procurement. Ensures RFPs represent the validated design intent.',
+    connects:['p_llm','kf_trace'] },
+  a_uc9:{ id:'a_uc9', cat:'AGENT', label:'UC-09 Drift Detection Agent', icon:'◉', color:'#a78bfa',
+    desc:'Autonomous agent monitoring deployment telemetry for deviations from the approved design baseline.',
+    role:'Closes the implementation feedback loop. Prevents technical debt accumulating silently.',
+    connects:['p_dt','p_snow','kf_estate'] },
+  a_uc10:{ id:'a_uc10', cat:'AGENT', label:'UC-10 Operational Intelligence Agent', icon:'◉', color:'#a78bfa',
+    desc:'Autonomous agent correlating monitoring alerts with business process impact and suggesting remediation.',
+    role:'Transforms operational monitoring from CI-centric to business-impact-centric.',
+    connects:['p_dt','p_snow','kf_estate'] },
+  // PLATFORMS
+  p_snow:{ id:'p_snow', cat:'PLATFORM', label:'ServiceNow', icon:'▣', color:'#34d399',
+    desc:'ITSM and CMDB platform. Central record of infrastructure CIs, incidents, changes, and tasks.',
+    role:'Source of CMDB data for UC-04. Target for drift events (UC-09) and enriched incidents (UC-10).',
+    connects:['a_uc4','a_uc9','a_uc10'] },
+  p_dt:{ id:'p_dt', cat:'PLATFORM', label:'Dynatrace', icon:'▣', color:'#34d399',
+    desc:'AI-powered observability platform providing real-time topology discovery and monitoring.',
+    role:'Primary source of live estate topology for UC-04 reconciliation. Triggers UC-09 and UC-10.',
+    connects:['a_uc4','a_uc9','a_uc10'] },
+  p_llm:{ id:'p_llm', cat:'PLATFORM', label:'LLM API', icon:'▣', color:'#34d399',
+    desc:'Large language model API (Claude / Azure OpenAI) providing reasoning for all advisory and generation agents.',
+    role:'Reasoning engine for all 10 agents.',
+    connects:['a_uc1','a_uc2','a_uc3','a_uc5','a_uc6','a_uc7','a_uc8'] },
+  p_jira:{ id:'p_jira', cat:'PLATFORM', label:'Jira / Confluence', icon:'▣', color:'#34d399',
+    desc:'Atlassian suite for requirements management and knowledge management.',
+    role:'Source of requirements for UC-02 and UC-03. Target for traceability matrix updates.',
+    connects:['a_uc2','a_uc3'] },
+  p_sharepoint:{ id:'p_sharepoint', cat:'PLATFORM', label:'SharePoint', icon:'▣', color:'#34d399',
+    desc:'Document management platform for governance artefacts.',
+    role:'Target for generated governance documents (UC-06). Read by UC-07 for pre-screening.',
+    connects:['a_uc6','a_uc7','a_uc8'] },
+  // KNOWLEDGE FABRIC
+  kf_estate:{ id:'kf_estate', cat:'FABRIC', label:'Live Estate Map', icon:'◈', color:'#818cf8',
+    desc:'Always-current map of infrastructure topology, dependencies, and business process relationships. Produced continuously by UC-04 from Dynatrace telemetry reconciled against CMDB.',
+    role:'Knowledge Fabric — Live State layer. Consumed by UC-05 (design), UC-09 (drift baseline), UC-10 (impact mapping).',
+    connects:['a_uc4','a_uc5','a_uc9','a_uc10'] },
+  kf_trace:{ id:'kf_trace', cat:'FABRIC', label:'Traceability Matrix', icon:'◈', color:'#818cf8',
+    desc:'Live linkage store connecting business goals → requirements → design decisions → governance approvals → implementation artefacts → operational CIs.',
+    role:'Knowledge Fabric — Traceability layer. Maintained by UC-03. Broken links flagged automatically.',
+    connects:['a_uc3','a_uc5','a_uc6','a_uc8'] },
+  kf_docs:{ id:'kf_docs', cat:'FABRIC', label:'Governance Record', icon:'◈', color:'#818cf8',
+    desc:'Generated and approved governance documents: security, application, data, infrastructure views. Produced from verified structured data, not manual authoring.',
+    role:'Knowledge Fabric — Governance Record layer. Produced by UC-06, verified by UC-07, referenced by UC-08.',
+    connects:['a_uc6','a_uc7','a_uc8'] }
+};
+
+const CAT_COLORS = { USER:'#60a5fa', INTERFACE:'#2dd4bf', AGENT:'#a78bfa', PLATFORM:'#34d399', DATA:'#f59e0b', FABRIC:'#818cf8', GOVERNANCE:'#fbbf24' };
+const CAT_LABELS = { USER:'User', INTERFACE:'Interface', AGENT:'Agent (AI)', PLATFORM:'Platform', DATA:'Data Store', FABRIC:'Knowledge Fabric', GOVERNANCE:'Governance' };
+
+const PHASES = [
+  { num:1, name:'Foundation', color:'#a78bfa', range:'Months 1–4',
+    ucIds:['UC01','UC02','UC03'],
+    deps:['LLM API integration','Jira/Confluence API access','Requirements portal deployment'] },
+  { num:2, name:'Estate & Design', color:'#60a5fa', range:'Months 4–8',
+    ucIds:['UC04','UC05','UC06'],
+    deps:['Dynatrace API credentials','ServiceNow CMDB API access','UC-04 live before UC-05','EA tool integration'] },
+  { num:3, name:'Governance & Procurement', color:'#f59e0b', range:'Months 7–11',
+    ucIds:['UC07','UC08'],
+    deps:['SharePoint / Graph API','Governance template library','UC-03 traceability live','Architecture Principles Library structured'] },
+  { num:4, name:'Live Ops', color:'#34d399', range:'Months 10–14',
+    ucIds:['UC09','UC10'],
+    deps:['Dynatrace–ServiceNow integration live','UC-04 estate map baseline','Approved design artefacts available'] }
+];
+
+const UCS = [
+  { id:'UC01', code:'UC-01', title:'Goal Formation Coach', agentType:'ADVISORY', phase:1, stage:'goal' },
+  { id:'UC02', code:'UC-02', title:'Requirements Quality Gate', agentType:'ADVISORY', phase:1, stage:'req' },
+  { id:'UC03', code:'UC-03', title:'Traceability Fabric', agentType:'HYBRID', phase:1, stage:'req' },
+  { id:'UC04', code:'UC-04', title:'Estate Discovery Agent', agentType:'AUTONOMOUS', phase:2, stage:'design' },
+  { id:'UC05', code:'UC-05', title:'Design Advisory Agent', agentType:'ADVISORY', phase:2, stage:'design' },
+  { id:'UC06', code:'UC-06', title:'Document Generation Agent', agentType:'AUTONOMOUS', phase:2, stage:'gov' },
+  { id:'UC07', code:'UC-07', title:'Governance Verification Agent', agentType:'ADVISORY', phase:3, stage:'gov' },
+  { id:'UC08', code:'UC-08', title:'Procurement Intelligence Agent', agentType:'ADVISORY', phase:3, stage:'proc' },
+  { id:'UC09', code:'UC-09', title:'Drift Detection Agent', agentType:'AUTONOMOUS', phase:4, stage:'impl' },
+  { id:'UC10', code:'UC-10', title:'Operational Intelligence Agent', agentType:'AUTONOMOUS', phase:4, stage:'ops' }
+];
+
+// ════════════════════════════════════════════════════════════
+// PAGE NAVIGATION
+// ════════════════════════════════════════════════════════════
+let currentPage = 'pain';
+let netInitialised = false;
+let archInitialised = false;
+
+function showPage(page) {
+  document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  document.getElementById('nav-' + page).classList.add('active');
+  currentPage = page;
+  if (page === 'network' && !netInitialised) { netInitialised = true; setTimeout(netInit, 50); }
+  if (page === 'arch' && !archInitialised) { archInitialised = true; setTimeout(() => { archBuildTiers(); }, 50); }
+}
+
+// ════════════════════════════════════════════════════════════
+// PAGE 1 — PAIN POINTS
+// ════════════════════════════════════════════════════════════
+function painInit() {
+  const list = document.getElementById('persona-list');
+  PERSONAS.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'persona-card';
+    card.innerHTML = `<div class="p-icon">${p.icon}</div><div><div class="p-name">${p.name}</div><div class="p-stage">${p.stage}</div></div>`;
+    card.onclick = () => painSelect(p, card);
+    list.appendChild(card);
+  });
+}
+
+function painSelect(persona, card) {
+  document.querySelectorAll('.persona-card').forEach(c => c.classList.remove('active'));
+  card.classList.add('active');
+  const centre = document.getElementById('pain-centre');
+  centre.innerHTML = `
+    <div class="persona-header">
+      <div class="ph-icon">${persona.icon}</div>
+      <div><div class="ph-name">${persona.name}</div><div class="ph-desc">${persona.desc}</div></div>
+    </div>
+    <div class="pain-cards-grid">
+      ${persona.pains.map(pain => `
+        <div class="pain-card">
+          <div class="pain-stage-label">${pain.stage}</div>
+          <div class="pain-card-title">${pain.title}</div>
+          <div class="pain-card-text">${pain.text}</div>
+          ${pain.agent ? `<div class="pain-agent-pill">◉ ${pain.agent}</div>` : ''}
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function toggleSvot() {
+  document.getElementById('svot-bar').classList.toggle('expanded');
+}
+
+// ════════════════════════════════════════════════════════════
+// PAGE 2 — AGENT NETWORK (canvas)
+// ════════════════════════════════════════════════════════════
+let netCanvas, netCtx, netNodes2d = {}, netAnimFrame = null, netSelectedConn = null,
+    netSelectedNode = null, netCurrentView = 'graph', netDashOffset = 0;
+
+// Extended node data for detail panel
+const NET_NODE_DETAIL = {
+  uc01:{ inputs:['Business case drafts','Strategic objective documents','Prior project outcomes'], outputs:['Structured goal statements','Measurability score','Gap analysis report'], tools:['Claude API','Microsoft 365'], phase:'Phase 1 — Foundation', type:'ADVISORY' },
+  uc02:{ inputs:['Requirements spreadsheets','Jira epics/stories','NFR templates'], outputs:['Quality score','Ambiguity flags','NFR gap report','Resolution suggestions'], tools:['Claude API','Jira','Confluence'], phase:'Phase 1 — Foundation', type:'ADVISORY' },
+  uc03:{ inputs:['Goals (UC-01 output)','Requirements (UC-02 output)','Design documents','Governance records'], outputs:['Live traceability matrix','Broken link alerts','Audit trail for governance'], tools:['Claude API','Jira','ServiceNow','SharePoint'], phase:'Phase 1 — Foundation', type:'HYBRID' },
+  uc04:{ inputs:['Dynatrace API telemetry','ServiceNow CMDB','EA tool exports','Deployment records'], outputs:['Accurate estate map','Dependency graph','CMDB discrepancy report','Reuse opportunities'], tools:['Dynatrace','ServiceNow','EA Tools','Claude API'], phase:'Phase 2 — Estate & Design', type:'AUTONOMOUS' },
+  uc05:{ inputs:['Requirements (UC-02)','Estate map (UC-04)','Architecture principles library','Roadmap data'], outputs:['Design options with rationale','Principle compliance report','Roadmap conflict flags','Recommended patterns'], tools:['Claude API','EA Tools','SharePoint','Principles Library'], phase:'Phase 2 — Estate & Design', type:'ADVISORY' },
+  uc06:{ inputs:['Design outputs (UC-05)','Governance templates','Traceability matrix (UC-03)','Organisation standards'], outputs:['Security architecture document','Application architecture document','Data architecture document','Infrastructure design document'], tools:['Claude API','SharePoint','Microsoft Office'], phase:'Phase 2 — Estate & Design', type:'AUTONOMOUS' },
+  uc07:{ inputs:['Governance documents (UC-06)','Architecture principles','Security policies','Regulatory requirements'], outputs:['Pre-review compliance report','Exceptions list','Principles conflict flags','Evolution proposals for governance committee'], tools:['Claude API','SharePoint','Governance Frameworks'], phase:'Phase 3 — Governance & Procurement', type:'ADVISORY' },
+  uc08:{ inputs:['RFP documents','Supplier responses','Traceability matrix (UC-03)','Architecture decisions (UC-05)'], outputs:['Goal-to-requirement alignment report','RFP contradiction flags','Supplier response analysis','Scoring guidance for evaluators'], tools:['Claude API','Procurement Platform','Traceability Matrix'], phase:'Phase 3 — Governance & Procurement', type:'ADVISORY' },
+  uc09:{ inputs:['CI/CD deployment events','Dynatrace topology changes','Approved design (UC-05)','CMDB'], outputs:['Drift alerts','Updated CMDB entries','Design deviation reports','Traceability matrix updates'], tools:['Dynatrace','ServiceNow','CI/CD Pipeline','Claude API'], phase:'Phase 4 — Live Ops', type:'AUTONOMOUS' },
+  uc10:{ inputs:['Dynatrace alerts','ServiceNow CMDB','Business process map','Incident history'], outputs:['Business-impact-aware alerts','Auto-created ITSM tickets','Pattern analysis','Remediation recommendations'], tools:['Dynatrace','ServiceNow','Claude API','ITSM'], phase:'Phase 4 — Live Ops', type:'AUTONOMOUS' },
+  snow:{ inputs:['Incident data','CI records','Change requests'], outputs:['ITSM tickets','CMDB records','Change approvals'], tools:['ServiceNow REST API','MID Server'], phase:'Platform', type:'PLATFORM' },
+  dt:  { inputs:['Infrastructure telemetry','Application traces','Log data'], outputs:['Real-time topology map','Alerts with AI causation','Business impact signals'], tools:['Dynatrace API','Davis AI'], phase:'Platform', type:'PLATFORM' },
+  llm: { inputs:['Prompt and context from agents','Structured data and documents'], outputs:['Natural language analysis','Structured recommendations','Generated document drafts'], tools:['Claude Sonnet','Azure OpenAI GPT-4o'], phase:'Platform', type:'PLATFORM' },
+  jira:{ inputs:['Requirements entries','Story updates'], outputs:['Structured requirements data','Traceability links','Task assignments'], tools:['Jira REST API','Confluence API','Forge'], phase:'Platform', type:'PLATFORM' },
+  sp:  { inputs:['Document uploads','Template requests'], outputs:['Governance document repository','Approval workflow state','Template library'], tools:['SharePoint Graph API','Microsoft 365'], phase:'Platform', type:'PLATFORM' }
+};
+
+function netInit() {
+  netCanvas = document.getElementById('net-canvas');
+  netCtx = netCanvas.getContext('2d');
+  netResizeCanvas();
+  netLayoutNodes();
+  netBuildSidebar();
+  netStartAnimation();
+  netCanvas.addEventListener('click', netHandleClick);
+  netCanvas.addEventListener('mousemove', netHandleHover);
+}
+
+function netResizeCanvas() {
+  const wrap = document.getElementById('net-canvas-wrap');
+  netCanvas.width = wrap.clientWidth;
+  netCanvas.height = wrap.clientHeight;
+  if (netInitialised) netLayoutNodes();
+}
+
+function netLayoutNodes() {
+  const W = netCanvas.width, H = netCanvas.height;
+  const agents = Object.values(NET_NODES).filter(n => n.type === 'AGENT');
+  const platforms = Object.values(NET_NODES).filter(n => n.type === 'PLATFORM');
+  const cols = 5, rowH = H / 3;
+  agents.forEach((n, i) => {
+    const col = i % cols, row = Math.floor(i / cols);
+    netNodes2d[n.id] = { x: (col + 0.5) * (W * 0.82 / cols) + W * 0.09, y: rowH * 0.38 + row * rowH, r: 30 };
+  });
+  platforms.forEach((n, i) => {
+    netNodes2d[n.id] = { x: (i + 0.5) * (W / (platforms.length + 1)), y: H * 0.89, r: 22 };
+  });
+}
+
+// Get edge point: point on circle perimeter in direction of target
+function edgePoint(from, to, r) {
+  const dx = to.x - from.x, dy = to.y - from.y;
+  const len = Math.hypot(dx, dy) || 1;
+  return { x: from.x + (dx / len) * r, y: from.y + (dy / len) * r };
+}
+
+function netStartAnimation() {
+  if (netAnimFrame) cancelAnimationFrame(netAnimFrame);
+  function loop() {
+    netDashOffset = (netDashOffset + 0.4) % 24;
+    netDraw();
+    netAnimFrame = requestAnimationFrame(loop);
+  }
+  loop();
+}
+
+function netDraw() {
+  const ctx = netCtx, W = netCanvas.width, H = netCanvas.height;
+  ctx.clearRect(0, 0, W, H);
+
+  // connections — drawn from circle edge to circle edge
+  NET_CONNECTIONS.forEach(conn => {
+    const a = netNodes2d[conn.from], b = netNodes2d[conn.to];
+    if (!a || !b) return;
+    const isSelected = netSelectedConn && netSelectedConn.from === conn.from && netSelectedConn.to === conn.to;
+    const isNodeHighlight = netSelectedNode && (conn.from === netSelectedNode || conn.to === netSelectedNode);
+    const ea = edgePoint(a, b, a.r), eb = edgePoint(b, a, b.r);
+
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(ea.x, ea.y);
+    ctx.lineTo(eb.x, eb.y);
+
+    if (isSelected) {
+      ctx.strokeStyle = '#58a6ff';
+      ctx.lineWidth = 2;
+      ctx.setLineDash([6, 4]);
+      ctx.lineDashOffset = -netDashOffset;
+    } else if (isNodeHighlight) {
+      ctx.strokeStyle = NET_NODES[conn.from]?.color + 'aa' || 'rgba(88,166,255,0.6)';
+      ctx.lineWidth = 1.5;
+      ctx.setLineDash([5, 4]);
+      ctx.lineDashOffset = -netDashOffset;
+    } else {
+      ctx.strokeStyle = 'rgba(48,54,61,0.55)';
+      ctx.lineWidth = 1;
+      ctx.setLineDash([4, 5]);
+      ctx.lineDashOffset = -netDashOffset;
+    }
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.restore();
+  });
+
+  // nodes
+  Object.values(NET_NODES).forEach(n => {
+    const pos = netNodes2d[n.id]; if (!pos) return;
+    const isSelected = netSelectedNode === n.id;
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(pos.x, pos.y, pos.r, 0, Math.PI * 2);
+    ctx.fillStyle = isSelected ? n.color + '44' : n.color + '18';
+    ctx.fill();
+    ctx.strokeStyle = n.color;
+    ctx.lineWidth = isSelected ? 2.5 : 1.5;
+    ctx.stroke();
+    if (isSelected) {
+      ctx.beginPath();
+      ctx.arc(pos.x, pos.y, pos.r + 5, 0, Math.PI * 2);
+      ctx.strokeStyle = n.color + '44';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+    ctx.fillStyle = n.color;
+    ctx.font = `bold 8px 'DM Sans', sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    const lines = n.label.split('\n');
+    if (lines.length > 1) {
+      ctx.fillText(lines[0], pos.x, pos.y - 5);
+      ctx.font = `7.5px 'DM Sans', sans-serif`;
+      ctx.fillStyle = '#8b949e';
+      ctx.fillText(lines[1], pos.x, pos.y + 5);
+    } else {
+      ctx.fillText(n.label, pos.x, pos.y);
+    }
+    ctx.restore();
+  });
+}
+
+function netHandleClick(e) {
+  const rect = netCanvas.getBoundingClientRect();
+  const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+
+  // Check nodes first
+  for (const [id, pos] of Object.entries(netNodes2d)) {
+    if (Math.hypot(mx - pos.x, my - pos.y) <= pos.r) {
+      netSelectedNode = id;
+      netSelectedConn = null;
+      closeDrawer();
+      netShowNodeDetail(id);
+      return;
+    }
+  }
+
+  // Check connections
+  for (const conn of NET_CONNECTIONS) {
+    const a = netNodes2d[conn.from], b = netNodes2d[conn.to];
+    if (!a || !b) continue;
+    const ea = edgePoint(a, b, a.r), eb = edgePoint(b, a, b.r);
+    const dist = pointToSegDist(mx, my, ea.x, ea.y, eb.x, eb.y);
+    if (dist < 8) {
+      netSelectedConn = conn;
+      netSelectedNode = null;
+      netHideNodeDetail();
+      openDrawer(conn);
+      return;
+    }
+  }
+
+  // Click on empty space
+  netSelectedConn = null;
+  netSelectedNode = null;
+  closeDrawer();
+  netHideNodeDetail();
+}
+
+function netHandleHover(e) {
+  const rect = netCanvas.getBoundingClientRect();
+  const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+  let onHit = false;
+  for (const pos of Object.values(netNodes2d)) {
+    if (Math.hypot(mx - pos.x, my - pos.y) <= pos.r) { onHit = true; break; }
+  }
+  if (!onHit) {
+    for (const conn of NET_CONNECTIONS) {
+      const a = netNodes2d[conn.from], b = netNodes2d[conn.to];
+      if (!a || !b) continue;
+      const ea = edgePoint(a, b, a.r), eb = edgePoint(b, a, b.r);
+      if (pointToSegDist(mx, my, ea.x, ea.y, eb.x, eb.y) < 8) { onHit = true; break; }
+    }
+  }
+  netCanvas.style.cursor = onHit ? 'pointer' : 'default';
+}
+
+function netShowNodeDetail(id) {
+  const n = NET_NODES[id];
+  const d = NET_NODE_DETAIL[id];
+  if (!n) return;
+  document.getElementById('net-detail-empty').style.display = 'none';
+  const content = document.getElementById('net-detail-content');
+  content.classList.add('visible');
+  const typeCol = n.type === 'AGENT' ? '#a78bfa' : n.type === 'PLATFORM' ? '#34d399' : '#60a5fa';
+  const phaseCol = d?.phase?.includes('Phase 1') ? '#a78bfa' : d?.phase?.includes('Phase 2') ? '#60a5fa' : d?.phase?.includes('Phase 3') ? '#f59e0b' : d?.phase?.includes('Phase 4') ? '#34d399' : '#7d8590';
+  const inputsHTML = d?.inputs?.map(i => `<div class="nd-io-item">${i}</div>`).join('') || '';
+  const outputsHTML = d?.outputs?.map(o => `<div class="nd-io-item">${o}</div>`).join('') || '';
+  const toolsHTML = d?.tools?.map(t => `<div class="nd-chip">${t}</div>`).join('') || '';
+  const fullN = NET_NODES[id];
+  // Get description from ARCH_COMPONENTS if available
+  const archKey = 'a_' + id.replace('uc', 'uc');
+  const archComp = ARCH_COMPONENTS['a_' + id] || ARCH_COMPONENTS['p_' + id];
+  const descText = archComp?.desc || `${n.label.replace('\n',' ')} — component in the agent network.`;
+  const roleText = archComp?.role || '';
+
+  content.innerHTML = `
+    <div>
+      <div class="nd-eyebrow" style="color:${n.color}">${n.type}</div>
+      <div class="nd-title">${n.label.replace('\n',' ')}</div>
+      <div class="nd-type-row">
+        <div class="nd-type-badge" style="color:${typeCol};border-color:${typeCol}55;background:${typeCol}11">${d?.type || n.type}</div>
+        ${d?.phase ? `<div class="nd-phase-badge" style="color:${phaseCol};border-color:${phaseCol}44;background:${phaseCol}0d">${d.phase}</div>` : ''}
+      </div>
+    </div>
+    <div class="nd-divider"></div>
+    <div>
+      <div class="nd-section-label">Purpose</div>
+      <div class="nd-text">${descText}</div>
+    </div>
+    ${roleText ? `<div><div class="nd-section-label">Role in architecture</div><div class="nd-text">${roleText}</div></div>` : ''}
+    ${(inputsHTML || outputsHTML) ? `
+    <div>
+      <div class="nd-section-label">Data flow</div>
+      <div class="nd-io-grid">
+        <div class="nd-io-box">
+          <div class="nd-io-label" style="color:#58a6ff">Inputs</div>
+          ${inputsHTML}
+        </div>
+        <div class="nd-io-box">
+          <div class="nd-io-label" style="color:#3fb950">Outputs</div>
+          ${outputsHTML}
+        </div>
+      </div>
+    </div>` : ''}
+    ${toolsHTML ? `<div><div class="nd-section-label">Tools & integrations</div><div class="nd-chips">${toolsHTML}</div></div>` : ''}
+  `;
+  // highlight sidebar item
+  document.querySelectorAll('.ns-node').forEach(x => x.classList.remove('active'));
+  document.querySelectorAll('.ns-node').forEach(x => {
+    if (x.querySelector('.ns-text')?.textContent.includes(n.label.split('\n')[0])) x.classList.add('active');
+  });
+}
+
+function netHideNodeDetail() {
+  document.getElementById('net-detail-empty').style.display = '';
+  const content = document.getElementById('net-detail-content');
+  content.classList.remove('visible');
+  content.innerHTML = '';
+  document.querySelectorAll('.ns-node').forEach(x => x.classList.remove('active'));
+}
+
+function pointToSegDist(px, py, ax, ay, bx, by) {
+  const dx = bx - ax, dy = by - ay, len2 = dx*dx + dy*dy;
+  if (len2 === 0) return Math.hypot(px - ax, py - ay);
+  const t = Math.max(0, Math.min(1, ((px-ax)*dx + (py-ay)*dy) / len2));
+  return Math.hypot(px - (ax + t*dx), py - (ay + t*dy));
+}
+
+function openDrawer(conn) {
+  const fromN = NET_NODES[conn.from], toN = NET_NODES[conn.to];
+  document.getElementById('cd-title').textContent = conn.label;
+  document.getElementById('cd-route').textContent = `${fromN?.label.split('\n')[0] || conn.from} → ${toN?.label.split('\n')[0] || conn.to}`;
+  document.getElementById('cd-body').innerHTML = `
+    <div><div class="cd-section-label">Input</div><div class="cd-text">${conn.input}</div></div>
+    <div><div class="cd-section-label">Output</div><div class="cd-text">${conn.output}</div></div>
+  `;
+}
+
+function closeDrawer() {
+  document.getElementById('cd-title').textContent = '—';
+  document.getElementById('cd-route').textContent = 'Click a line between nodes to inspect the data flow';
+  document.getElementById('cd-body').innerHTML = `
+    <div style="opacity:0.35;font-size:11px;color:#7d8590;padding-top:4px">Input will appear here</div>
+    <div style="opacity:0.35;font-size:11px;color:#7d8590;padding-top:4px">Output will appear here</div>
+  `;
+}
+
+function netBuildSidebar() {
+  const agentsEl = document.getElementById('ns-agents');
+  const platEl = document.getElementById('ns-platforms');
+  Object.values(NET_NODES).forEach(n => {
+    const el = document.createElement('div');
+    el.className = 'ns-node';
+    el.innerHTML = `<div class="ns-dot" style="background:${n.color}"></div><div class="ns-text">${n.label.replace('\n',' ')}</div>`;
+    el.onclick = () => {
+      netSelectedNode = n.id;
+      netSelectedConn = null;
+      closeDrawer();
+      netShowNodeDetail(n.id);
+    };
+    (n.type === 'AGENT' ? agentsEl : platEl).appendChild(el);
+  });
+}
+
+function netSetView(v) {
+  netCurrentView = v;
+  document.getElementById('btn-graph').classList.toggle('active', v === 'graph');
+  document.getElementById('btn-timeline').classList.toggle('active', v === 'timeline');
+  const tl = document.getElementById('timeline-view');
+  if (v === 'timeline') {
+    tl.classList.add('visible');
+    netCanvas.style.display = 'none';
+    document.getElementById('net-canvas-wrap').style.display = 'none';
+    netBuildTimeline();
+  } else {
+    tl.classList.remove('visible');
+    netCanvas.style.display = 'block';
+    document.getElementById('net-canvas-wrap').style.display = 'block';
+  }
+}
+
+function netBuildTimeline() {
+  const tl = document.getElementById('timeline-view');
+  tl.innerHTML = '';
+  NET_PHASES.forEach(ph => {
+    const header = document.createElement('div');
+    header.className = 'tl-phase-header';
+    header.style.color = ph.color;
+    header.textContent = `Phase ${ph.num} — ${ph.name}`;
+    tl.appendChild(header);
+    ph.ids.forEach(id => {
+      const uc = UCS.find(u => u.id.toLowerCase() === id);
+      if (!uc) return;
+      const typeCol = uc.agentType === 'AUTONOMOUS' ? '#34d399' : uc.agentType === 'ADVISORY' ? '#58a6ff' : '#a371f7';
+      const card = document.createElement('div');
+      card.className = 'tl-card';
+      card.style.borderLeftColor = ph.color;
+      card.innerHTML = `<div class="tl-card-title" style="color:${ph.color}">${uc.code} — ${uc.title}</div><div class="tl-card-sub">${uc.agentType} AGENT</div><div class="tl-badges"><div class="tl-badge" style="color:${ph.color};border-color:${ph.color}44">Phase ${ph.num}</div><div class="tl-badge" style="color:${typeCol};border-color:${typeCol}44">${uc.agentType}</div></div>`;
+      tl.appendChild(card);
+    });
+  });
+}
+
+// ════════════════════════════════════════════════════════════
+// PAGE 3 — ARCHITECTURE TIERS (with Knowledge Fabric & Principles)
+// ════════════════════════════════════════════════════════════
+let archCurrentLayout = 'tiers';
+let archSelectedNode = null;
+
+function archBuildTiers() {
+  const container = document.getElementById('svg-tiers');
+  container.innerHTML = '';
+
+  const sections = [
+    {
+      label: 'Users & Interfaces',
+      nodes: ['u_ba','u_sa','u_gov','u_pm','u_ip','u_ops','i_portal','i_browser','i_ea']
+    },
+    {
+      label: 'Agent Network (AI)',
+      nodes: ['a_uc1','a_uc2','a_uc3','a_uc4','a_uc5','a_uc6','a_uc7','a_uc8','a_uc9','a_uc10']
+    },
+    {
+      label: 'Platforms & Systems of Record',
+      nodes: ['p_snow','p_dt','p_llm','p_jira','p_sharepoint']
+    }
+  ];
+
+  // Architecture Principles (constraint layer — rendered as special tier)
+  const principlesTier = document.createElement('div');
+  principlesTier.className = 'principles-tier';
+  principlesTier.innerHTML = `
+    <div class="principles-tier-header">
+      <div class="principles-tier-icon">⚖</div>
+      <div class="principles-tier-title">Architecture Principles</div>
+      <div class="principles-tier-subtitle">Constraint layer · Owned by Architecture Governance Committee</div>
+    </div>
+    <div class="principles-content">
+      <div class="principles-lib" onclick="archShowDetail('g_principles')" style="cursor:pointer">
+        <div class="pl-label">Principles Library</div>
+        <div class="pl-title">Nationwide EA Principles</div>
+        <div class="pl-text">Authoritative set of architecture principles, patterns, and standards. Agents read from it; they cannot write to it directly. Changes require governance committee approval.</div>
+        <div class="pl-owner">⚖ Owned by Architecture Governance Committee</div>
+      </div>
+      <div class="principles-flows">
+        <div class="pf-arrow">→ consulted by UC-05</div>
+        <div class="pf-arrow">→ validated by UC-07</div>
+        <div class="pf-arrow">← evolution proposals</div>
+      </div>
+      <div class="principles-feedback">
+        <div class="pfb-label">Feedback Loop</div>
+        <div class="pfb-title">Principles Evolution Proposals</div>
+        <div class="pfb-text">When UC-07 detects that a principle is routinely overridden or appears outdated relative to the current estate, it generates a structured evolution proposal returned to the governance committee for review.</div>
+        <div class="pfb-agent">◉ Produced by UC-07 Governance Verification Agent</div>
+      </div>
+    </div>
+  `;
+  container.appendChild(principlesTier);
+
+  // Standard tiers
+  sections.forEach(sec => {
+    const section = document.createElement('div');
+    section.className = 'tier-section';
+    section.innerHTML = `<div class="tier-label">${sec.label}</div>`;
+    const row = document.createElement('div');
+    row.className = 'tier-row';
+    sec.nodes.forEach(id => {
+      const comp = ARCH_COMPONENTS[id]; if (!comp) return;
+      const color = CAT_COLORS[comp.cat] || '#7d8590';
+      const node = document.createElement('div');
+      node.className = 'arch-node';
+      node.style.borderColor = color + '55';
+      node.style.background = color + '11';
+      node.style.color = color;
+      node.innerHTML = `<span>${comp.icon}</span><span>${comp.label}</span>`;
+      node.onclick = () => archShowDetail(id);
+      row.appendChild(node);
+    });
+    section.appendChild(row);
+    container.appendChild(section);
+  });
+
+  // Knowledge Fabric tier
+  const fabricTier = document.createElement('div');
+  fabricTier.className = 'fabric-tier';
+  fabricTier.innerHTML = `
+    <div class="fabric-tier-header">
+      <div class="fabric-tier-icon">◈</div>
+      <div class="fabric-tier-title">Knowledge Fabric</div>
+      <div class="fabric-tier-subtitle">Emergent output of the agent network · not a repository · not maintained by humans</div>
+    </div>
+    <div class="fabric-sublayers">
+      <div class="fabric-sublayer" onclick="archShowDetail('kf_estate')" style="cursor:pointer">
+        <div class="fsl-label">Live State</div>
+        <div class="fsl-title">Live Estate Map</div>
+        <div class="fsl-text">Always-current topology of the estate, produced by continuous Dynatrace–CMDB reconciliation. Replaces stale architecture documentation as the ground truth for design.</div>
+        <div class="fsl-agents">◉ Produced by UC-04 · consumed by UC-05, UC-09, UC-10</div>
+      </div>
+      <div class="fabric-sublayer" onclick="archShowDetail('kf_trace')" style="cursor:pointer">
+        <div class="fsl-label">Traceability</div>
+        <div class="fsl-title">Traceability Matrix</div>
+        <div class="fsl-text">Live chain linking business goals → requirements → design decisions → governance approvals → implementation artefacts → operational CIs. Broken links flagged automatically.</div>
+        <div class="fsl-agents">◉ Maintained by UC-03 · read by UC-05, UC-06, UC-08</div>
+      </div>
+      <div class="fabric-sublayer" onclick="archShowDetail('kf_docs')" style="cursor:pointer">
+        <div class="fsl-label">Governance Record</div>
+        <div class="fsl-title">Governance Documents</div>
+        <div class="fsl-text">Security, application, data, and infrastructure governance documents generated from verified structured data — not written from human memory. Pre-screened before committee review.</div>
+        <div class="fsl-agents">◉ Generated by UC-06 · verified by UC-07 · referenced by UC-08</div>
+      </div>
+    </div>
+  `;
+  container.appendChild(fabricTier);
+}
+
+function archBuildFlow() {
+  const container = document.getElementById('svg-flow');
+  container.innerHTML = '';
+  const stages = [
+    { label:'Goal Formation', color:'#a78bfa', nodes:['u_ba','a_uc1'] },
+    { label:'Requirements', color:'#60a5fa', nodes:['a_uc2','a_uc3','i_portal'] },
+    { label:'Design', color:'#34d399', nodes:['a_uc4','a_uc5','i_ea','g_principles'] },
+    { label:'Governance', color:'#f59e0b', nodes:['a_uc6','a_uc7','u_gov'] },
+    { label:'Procurement', color:'#fb923c', nodes:['a_uc8','u_pm'] },
+    { label:'Implementation', color:'#f87171', nodes:['a_uc9','u_ip'] },
+    { label:'Operations', color:'#22d3ee', nodes:['a_uc10','u_ops','p_dt','p_snow'] }
+  ];
+  const flowWrap = document.createElement('div');
+  flowWrap.style.cssText = 'display:flex;gap:8px;min-width:max-content;padding:4px';
+  stages.forEach((stage, si) => {
+    const col = document.createElement('div');
+    col.style.cssText = `min-width:150px;background:#161b22;border:1px solid ${stage.color}44;border-top:3px solid ${stage.color};border-radius:8px;padding:10px`;
+    col.innerHTML = `<div style="font-family:Syne,sans-serif;font-size:10px;font-weight:700;color:${stage.color};text-transform:uppercase;letter-spacing:0.07em;margin-bottom:8px">${stage.label}</div>`;
+    stage.nodes.forEach(id => {
+      const comp = ARCH_COMPONENTS[id]; if (!comp) return;
+      const color = CAT_COLORS[comp.cat] || '#7d8590';
+      const node = document.createElement('div');
+      node.style.cssText = `padding:6px 8px;border-radius:5px;border:1px solid ${color}44;background:${color}11;color:${color};font-size:10px;font-weight:600;cursor:pointer;margin-bottom:4px;display:flex;align-items:center;gap:5px;transition:all 0.12s`;
+      node.innerHTML = `<span>${comp.icon}</span><span>${comp.label}</span>`;
+      node.onclick = () => archShowDetail(id);
+      col.appendChild(node);
+    });
+    flowWrap.appendChild(col);
+    if (si < stages.length - 1) {
+      const arrow = document.createElement('div');
+      arrow.style.cssText = 'display:flex;align-items:center;font-size:18px;color:#30363d;flex-shrink:0';
+      arrow.textContent = '→';
+      flowWrap.appendChild(arrow);
+    }
+  });
+  container.appendChild(flowWrap);
+
+  // Add fabric & principles legend below
+  const legend = document.createElement('div');
+  legend.style.cssText = 'margin-top:16px;display:flex;gap:8px;flex-wrap:wrap';
+  [
+    { color:'#818cf8', label:'Knowledge Fabric', ids:['kf_estate','kf_trace','kf_docs'] },
+    { color:'#fbbf24', label:'Architecture Principles', ids:['g_principles'] }
+  ].forEach(group => {
+    const box = document.createElement('div');
+    box.style.cssText = `background:${group.color}11;border:1px solid ${group.color}33;border-radius:7px;padding:8px 12px;display:flex;gap:6px;align-items:center;flex-wrap:wrap`;
+    box.innerHTML = `<span style="font-size:10px;font-weight:700;color:${group.color};text-transform:uppercase;letter-spacing:0.06em;margin-right:4px">${group.label}</span>`;
+    group.ids.forEach(id => {
+      const comp = ARCH_COMPONENTS[id]; if (!comp) return;
+      const chip = document.createElement('div');
+      chip.style.cssText = `padding:3px 8px;border-radius:4px;border:1px solid ${group.color}44;background:${group.color}11;color:${group.color};font-size:10px;font-weight:600;cursor:pointer`;
+      chip.textContent = comp.label;
+      chip.onclick = () => archShowDetail(id);
+      box.appendChild(chip);
+    });
+    legend.appendChild(box);
+  });
+  container.appendChild(legend);
+}
+
+function archBuildHub() {
+  const svg = document.getElementById('hub-svg');
+  svg.innerHTML = '';
+  const W = svg.parentElement.clientWidth || 800;
+  const H = svg.parentElement.clientHeight || 600;
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+
+  const cx = W / 2, cy = H / 2;
+  const agentIds = Object.keys(ARCH_COMPONENTS).filter(k => ARCH_COMPONENTS[k].cat === 'AGENT');
+  const platformIds = Object.keys(ARCH_COMPONENTS).filter(k => ['PLATFORM','GOVERNANCE'].includes(ARCH_COMPONENTS[k].cat));
+  const fabricIds = Object.keys(ARCH_COMPONENTS).filter(k => ARCH_COMPONENTS[k].cat === 'FABRIC');
+
+  const positions = {};
+
+  // Centre: LLM
+  positions['p_llm'] = { x: cx, y: cy };
+
+  // Agents in inner ring
+  const innerR = Math.min(W, H) * 0.27;
+  agentIds.forEach((id, i) => {
+    const angle = (i / agentIds.length) * Math.PI * 2 - Math.PI / 2;
+    positions[id] = { x: cx + Math.cos(angle) * innerR, y: cy + Math.sin(angle) * innerR };
+  });
+
+  // Platforms in outer ring
+  const outerR = Math.min(W, H) * 0.42;
+  [...platformIds.filter(id => id !== 'p_llm'), ...fabricIds].forEach((id, i, arr) => {
+    const angle = (i / arr.length) * Math.PI * 2 - Math.PI / 2;
+    positions[id] = { x: cx + Math.cos(angle) * outerR, y: cy + Math.sin(angle) * outerR };
+  });
+
+  // Draw connections
+  Object.values(ARCH_COMPONENTS).forEach(comp => {
+    (comp.connects || []).forEach(tid => {
+      const a = positions[comp.id], b = positions[tid];
+      if (!a || !b) return;
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.setAttribute('x1', a.x); line.setAttribute('y1', a.y);
+      line.setAttribute('x2', b.x); line.setAttribute('y2', b.y);
+      line.setAttribute('stroke', '#21262d'); line.setAttribute('stroke-width', '1');
+      svg.appendChild(line);
+    });
+  });
+
+  // Draw nodes
+  Object.entries(positions).forEach(([id, pos]) => {
+    const comp = ARCH_COMPONENTS[id]; if (!comp) return;
+    const color = CAT_COLORS[comp.cat] || '#7d8590';
+    const r = comp.cat === 'AGENT' ? 26 : comp.cat === 'FABRIC' ? 22 : 20;
+    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    g.style.cursor = 'pointer';
+    g.onclick = () => archShowDetail(id);
+    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    circle.setAttribute('cx', pos.x); circle.setAttribute('cy', pos.y); circle.setAttribute('r', r);
+    circle.setAttribute('fill', color + '22'); circle.setAttribute('stroke', color); circle.setAttribute('stroke-width', '1.5');
+    g.appendChild(circle);
+    const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    text.setAttribute('x', pos.x); text.setAttribute('y', pos.y + 4);
+    text.setAttribute('text-anchor', 'middle'); text.setAttribute('fill', color);
+    text.setAttribute('font-size', '9'); text.setAttribute('font-weight', '600');
+    text.setAttribute('font-family', 'DM Sans, sans-serif');
+    const shortLabel = comp.label.length > 12 ? comp.label.substring(0, 10) + '…' : comp.label;
+    text.textContent = shortLabel;
+    g.appendChild(text);
+    svg.appendChild(g);
+  });
+}
+
+function archShowDetail(id) {
+  archSelectedNode = id;
+  const comp = ARCH_COMPONENTS[id]; if (!comp) return;
+  const panel = document.getElementById('arch-detail-panel');
+  document.getElementById('adp-category').textContent = (CAT_LABELS[comp.cat] || comp.cat).toUpperCase();
+  document.getElementById('adp-name').textContent = comp.label;
+  const connHTML = (comp.connects || []).map(cid => {
+    const cc = ARCH_COMPONENTS[cid];
+    return `<div class="adp-conn-chip" onclick="archShowDetail('${cid}')">${cc ? cc.icon + ' ' + cc.label : cid}</div>`;
+  }).join('');
+  const detailsHTML = comp.details ? Object.entries(comp.details).map(([k,v]) => `<div style="margin-bottom:5px"><span style="font-size:10px;color:#7d8590;font-weight:600">${k}: </span><span style="font-size:11px;color:#8b949e">${v}</span></div>`).join('') : '';
+  document.getElementById('adp-body').innerHTML = `
+    <div>
+      <div class="adp-section-label">Description</div>
+      <div class="adp-text">${comp.desc}</div>
+    </div>
+    ${comp.role ? `<div><div class="adp-section-label">Role in architecture</div><div class="adp-text">${comp.role}</div></div>` : ''}
+    ${detailsHTML ? `<div>${detailsHTML}</div>` : ''}
+    <div>
+      <div class="adp-section-label">Connects to</div>
+      <div class="adp-conn-list">${connHTML || '<div class="adp-text" style="color:var(--text3)">No connections</div>'}</div>
+    </div>
+  `;
+  panel.classList.add('visible');
+}
+
+function archCloseDetail() {
+  archSelectedNode = null;
+  document.getElementById('arch-detail-panel').classList.remove('visible');
+}
+
+function setArchLayout(layout, event) {
+  archCurrentLayout = layout;
+  document.querySelectorAll('#page-arch .arch-tab').forEach(el => el.classList.remove('active'));
+  if (event?.target) event.target.classList.add('active');
+  // Make sure we're on diagram page
+  setArchPage('diag', true);
+  document.querySelectorAll('.diag-layer').forEach(el => el.classList.remove('active'));
+  document.getElementById('svg-' + layout).classList.add('active');
+  archCloseDetail();
+  setTimeout(() => {
+    if (layout === 'tiers') archBuildTiers();
+    else if (layout === 'flow') archBuildFlow();
+    else archBuildHub();
+  }, 30);
+}
+
+function setArchPage(p, fromLayout) {
+  document.querySelectorAll('#page-arch .arch-page').forEach(el => {
+    el.classList.remove('active');
+    el.style.display = 'none';
+  });
+  const target = document.getElementById('arch-page-' + p);
+  target.classList.add('active');
+  target.style.display = p === 'diag' ? 'flex' : 'block';
+  if (!fromLayout) {
+    document.getElementById('arch-nav-diag').classList.toggle('active', p === 'diag');
+    document.getElementById('arch-nav-impl').classList.toggle('active', p === 'impl');
+  } else {
+    document.getElementById('arch-nav-diag').classList.add('active');
+    document.getElementById('arch-nav-impl').classList.remove('active');
+  }
+  if (p === 'impl') archBuildImpl();
+}
+
+function archBuildImpl() {
+  const container = document.getElementById('arch-page-impl');
+  container.innerHTML = '';
+  const grid = document.createElement('div');
+  grid.className = 'impl-grid';
+  const phaseDescs = {
+    1: 'Goal quality, requirements quality, and traceability — the prerequisite for everything downstream.',
+    2: 'Estate discovery, design advisory, and governance automation — the core architectural intelligence layer.',
+    3: 'Governance document generation, principles validation, and procurement intelligence.',
+    4: 'Operational intelligence — closing the loop from live estate back to design and CMDB.'
+  };
+  PHASES.forEach(ph => {
+    const col = document.createElement('div');
+    col.className = 'phase-col';
+    col.innerHTML = `
+      <div><div class="phase-num" style="color:${ph.color}">Phase ${ph.num}</div><div class="phase-name">${ph.name}</div><div class="phase-range">${ph.range}</div></div>
+      <div class="phase-desc">${phaseDescs[ph.num]}</div>
+    `;
+    const ucList = document.createElement('div'); ucList.className = 'uc-list';
+    ph.ucIds.forEach(ucId => {
+      const uc = UCS.find(u => u.id === ucId); if (!uc) return;
+      const typeCol = uc.agentType === 'AUTONOMOUS' ? '#34d399' : uc.agentType === 'ADVISORY' ? '#58a6ff' : '#a371f7';
+      const card = document.createElement('div');
+      card.className = 'uc-card'; card.style.borderLeftColor = ph.color;
+      card.innerHTML = `<div class="uc-card-code" style="color:${ph.color}">${uc.code}</div><div class="uc-card-name">${uc.title}</div><div class="uc-card-type" style="color:${typeCol};border-color:${typeCol}44;background:${typeCol}11">${uc.agentType}</div>`;
+      card.onclick = () => { setArchPage('diag'); setTimeout(() => { setArchLayout('tiers', null); setTimeout(() => archShowDetail('a_' + ucId.toLowerCase()), 100); }, 50); };
+      ucList.appendChild(card);
+    });
+    col.appendChild(ucList);
+    const deps = document.createElement('div'); deps.className = 'phase-deps';
+    deps.innerHTML = '<div class="deps-label">Key dependencies</div>';
+    ph.deps.forEach(dep => {
+      const di = document.createElement('div'); di.className = 'dep-item';
+      di.innerHTML = `<div class="dep-bullet" style="background:${ph.color}"></div><span>${dep}</span>`;
+      deps.appendChild(di);
+    });
+    col.appendChild(deps);
+    grid.appendChild(col);
+  });
+  container.appendChild(grid);
+}
+
+// ════════════════════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════════════════════
+painInit();
+
+window.addEventListener('resize', () => {
+  if (currentPage === 'arch' && archInitialised) {
+    if (archCurrentLayout === 'tiers') archBuildTiers();
+    else if (archCurrentLayout === 'flow') archBuildFlow();
+    else archBuildHub();
+  }
+});
+</script>
+
+
+</body></html>
