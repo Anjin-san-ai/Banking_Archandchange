@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<!-- saved from url=(0072)file:///C:/Users/2039669/Downloads/cognizant_nationwide_combined_16.html -->
+<!-- saved from url=(0072)file:///C:/Users/2039669/Downloads/cognizant_nationwide_combined_21.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cognizant — AI-enabled Change Delivery</title>
 <link rel="preconnect" href="https://fonts.googleapis.com/">
-<link href="./Cognizant — AI-enabled Change Delivery_files/css2" rel="stylesheet">
+<link href="./Cognizant — AI-enabled Change Delivery 100626_files/css2" rel="stylesheet">
 <style>
 /* ═══ RESET & SHELL ═══ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -516,7 +516,7 @@ body{font-family:'DM Sans',sans-serif;background:#0d1117}
     <div class="mt-sep"></div>
     <div class="mt-subtitle">AI-enabled Architecture &amp; Change Delivery</div>
     <nav class="mt-nav">
-      <button class="nav-btn active" id="nav-current" onclick="showPage(&#39;current&#39;)">
+      <button class="nav-btn" id="nav-current" onclick="showPage(&#39;current&#39;)">
         <span class="nb-icon">⚠</span> Current Change
       </button>
       <div class="nav-divider"></div>
@@ -532,7 +532,7 @@ body{font-family:'DM Sans',sans-serif;background:#0d1117}
         <span class="nb-icon">🎯</span> Pain Points
       </button>
       <div class="nav-divider"></div>
-      <button class="nav-btn" id="nav-network" onclick="showPage(&#39;network&#39;)">
+      <button class="nav-btn active" id="nav-network" onclick="showPage(&#39;network&#39;)">
         <span class="nb-icon">◉</span> Agent Network
       </button>
       <div class="nav-divider"></div>
@@ -550,7 +550,7 @@ body{font-family:'DM Sans',sans-serif;background:#0d1117}
   <div id="pages">
 
     <!-- PAGE: CURRENT CHANGE COST MODEL -->
-    <section class="page-section active" id="page-current" style="background:#0d1117;color:#e6edf3;overflow-y:auto">
+    <section class="page-section" id="page-current" style="background:#0d1117;color:#e6edf3;overflow-y:auto">
       <div style="padding:16px 18px 20px;display:flex;flex-direction:column;gap:11px;min-height:100%">
         <div>
           <div style="font-family:&#39;Syne&#39;,sans-serif;font-size:17px;font-weight:800;color:#e6edf3;margin-bottom:2px">The true cost of change delivery</div>
@@ -878,11 +878,12 @@ body{font-family:'DM Sans',sans-serif;background:#0d1117}
     </section>
 
     <!-- PAGE 2: AGENT NETWORK -->
-    <section class="page-section" id="page-network">
+    <section class="page-section active" id="page-network">
       <div id="net-topbar">
         <button class="net-tab active" id="btn-graph" onclick="netSetView(&#39;graph&#39;)">Graph View</button>
         <button class="net-tab" id="btn-timeline" onclick="netSetView(&#39;timeline&#39;)">Timeline View</button>
         <div class="net-legend">
+          <div class="nl-item"><div class="nl-dot" style="background:#2dd4bf"></div>Orchestrator</div>
           <div class="nl-item"><div class="nl-dot" style="background:#a78bfa"></div>Agent</div>
           <div class="nl-item"><div class="nl-dot" style="background:#34d399"></div>Platform</div>
           <div class="nl-item"><div class="nl-dot" style="background:#60a5fa"></div>User</div>
@@ -891,10 +892,15 @@ body{font-family:'DM Sans',sans-serif;background:#0d1117}
       </div>
       <div id="net-body">
         <div id="net-canvas-wrap">
-          <canvas id="net-canvas" width="680" height="463" style="cursor: default;"></canvas>
+          <canvas id="net-canvas" width="680" height="463" style="cursor: pointer;"></canvas>
           <div id="timeline-view"></div>
         </div>
         <div id="net-sidebar">
+          <div class="ns-section">
+            <div class="ns-label" style="color:#2dd4bf">Orchestrator</div>
+            <div id="ns-orchestrator"><div class="ns-node active"><div class="ns-dot" style="background:#2dd4bf"></div><div class="ns-text">UC-00 Orchestration Agent</div></div></div>
+          </div>
+          <div class="ns-divider"></div>
           <div class="ns-section">
             <div class="ns-label">Agents</div>
             <div id="ns-agents"><div class="ns-node"><div class="ns-dot" style="background:#a78bfa"></div><div class="ns-text">UC-01 Goal Formation Coach</div></div><div class="ns-node"><div class="ns-dot" style="background:#a78bfa"></div><div class="ns-text">UC-02 Requirements Quality Gate</div></div><div class="ns-node"><div class="ns-dot" style="background:#a78bfa"></div><div class="ns-text">UC-03 Traceability Fabric</div></div><div class="ns-node"><div class="ns-dot" style="background:#a78bfa"></div><div class="ns-text">UC-04 Estate Discovery</div></div><div class="ns-node"><div class="ns-dot" style="background:#a78bfa"></div><div class="ns-text">UC-05 Design Advisory</div></div><div class="ns-node"><div class="ns-dot" style="background:#a78bfa"></div><div class="ns-text">UC-06 Document Generation</div></div><div class="ns-node"><div class="ns-dot" style="background:#a78bfa"></div><div class="ns-text">UC-07 Governance Verification</div></div><div class="ns-node"><div class="ns-dot" style="background:#a78bfa"></div><div class="ns-text">UC-08 Procurement Intelligence</div></div><div class="ns-node"><div class="ns-dot" style="background:#a78bfa"></div><div class="ns-text">UC-09 Drift Detection</div></div><div class="ns-node"><div class="ns-dot" style="background:#a78bfa"></div><div class="ns-text">UC-10 Operational Intelligence</div></div></div>
@@ -906,11 +912,41 @@ body{font-family:'DM Sans',sans-serif;background:#0d1117}
           </div>
         </div>
         <div id="net-detail-panel">
-          <div id="net-detail-empty" style="">
+          <div id="net-detail-empty" style="display: none;">
             <div class="nde-icon">◉</div>
             <div class="nde-text">Click an agent or platform node to explore its role in the architecture</div>
           </div>
-          <div id="net-detail-content" class=""></div>
+          <div id="net-detail-content" class="visible">
+    <div>
+      <div class="nd-eyebrow" style="color:#2dd4bf">ORCHESTRATOR</div>
+      <div class="nd-title">UC-00 Orchestration Agent</div>
+      <div class="nd-type-row">
+        <div class="nd-type-badge" style="color:#60a5fa;border-color:#60a5fa55;background:#60a5fa11">ORCHESTRATOR</div>
+        <div class="nd-phase-badge" style="color:#7d8590;border-color:#7d859044;background:#7d85900d">Cross-cutting — all phases</div>
+      </div>
+    </div>
+    <div class="nd-divider"></div>
+    <div>
+      <div class="nd-section-label">Purpose</div>
+      <div class="nd-text">UC-00 Orchestration Agent — component in the agent network.</div>
+    </div>
+    
+    
+    <div>
+      <div class="nd-section-label">Data flow</div>
+      <div class="nd-io-grid">
+        <div class="nd-io-box">
+          <div class="nd-io-label" style="color:#58a6ff">Inputs</div>
+          <div class="nd-io-item">Stage completion events from all agents</div><div class="nd-io-item">Human approval signals</div><div class="nd-io-item">Exception and loop-back triggers</div><div class="nd-io-item">Programme context from Knowledge Base</div>
+        </div>
+        <div class="nd-io-box">
+          <div class="nd-io-label" style="color:#3fb950">Outputs</div>
+          <div class="nd-io-item">Stage dispatch signals to agents</div><div class="nd-io-item">Approval gate requests to stakeholders</div><div class="nd-io-item">Exception routing decisions</div><div class="nd-io-item">Real-time programme state dashboard</div>
+        </div>
+      </div>
+    </div>
+    <div><div class="nd-section-label">Tools &amp; integrations</div><div class="nd-chips"><div class="nd-chip">Event bus / ServiceNow workflow</div><div class="nd-chip">Claude API</div><div class="nd-chip">Knowledge Base</div><div class="nd-chip">Programme state store</div></div></div>
+  </div>
         </div>
       </div>
       <div id="net-drawer">
@@ -918,13 +954,13 @@ body{font-family:'DM Sans',sans-serif;background:#0d1117}
           <div class="cd-header">
             <div class="cd-title-area">
               <div class="cd-label-eyebrow">Connection</div>
-              <div class="cd-title" id="cd-title">Reasoning</div>
-              <div class="cd-route" id="cd-route">LLM API → UC-02</div>
+              <div class="cd-title" id="cd-title">—</div>
+              <div class="cd-route" id="cd-route">Click a line between nodes to inspect the data flow</div>
             </div>
           </div>
           <div class="cd-body" id="cd-body">
-    <div><div class="cd-section-label">Input</div><div class="cd-text">Requirements documents</div></div>
-    <div><div class="cd-section-label">Output</div><div class="cd-text">Quality report with ambiguity flags</div></div>
+    <div style="opacity:0.35;font-size:11px;color:#7d8590;padding-top:4px">Input will appear here</div>
+    <div style="opacity:0.35;font-size:11px;color:#7d8590;padding-top:4px">Output will appear here</div>
   </div>
         </div>
       </div>
@@ -943,58 +979,7 @@ body{font-family:'DM Sans',sans-serif;background:#0d1117}
       <div id="arch-body">
         <div class="arch-page active" id="arch-page-diag">
           <div id="arch-canvas-area">
-            <div class="diag-layer active" id="svg-tiers"><div class="principles-tier">
-    <div class="principles-tier-header">
-      <div class="principles-tier-icon">⚖</div>
-      <div class="principles-tier-title">Architecture Principles</div>
-      <div class="principles-tier-subtitle">Constraint layer · Owned by Architecture Governance Committee</div>
-    </div>
-    <div class="principles-content">
-      <div class="principles-lib" onclick="archShowDetail(&#39;g_principles&#39;)" style="cursor:pointer">
-        <div class="pl-label">Principles Library</div>
-        <div class="pl-title">EA Principles Library</div>
-        <div class="pl-text">Authoritative set of architecture principles, patterns, and standards. Agents read from it; they cannot write to it directly. Changes require governance committee approval.</div>
-        <div class="pl-owner">⚖ Owned by Architecture Governance Committee</div>
-      </div>
-      <div class="principles-flows">
-        <div class="pf-arrow">→ consulted by UC-05</div>
-        <div class="pf-arrow">→ validated by UC-07</div>
-        <div class="pf-arrow">← evolution proposals</div>
-      </div>
-      <div class="principles-feedback">
-        <div class="pfb-label">Feedback Loop</div>
-        <div class="pfb-title">Principles Evolution Proposals</div>
-        <div class="pfb-text">When UC-07 detects that a principle is routinely overridden or appears outdated relative to the current estate, it generates a structured evolution proposal returned to the governance committee for review.</div>
-        <div class="pfb-agent">◉ Produced by UC-07 Governance Verification Agent</div>
-      </div>
-    </div>
-  </div><div class="tier-section"><div class="tier-label">Users &amp; Interfaces</div><div class="tier-row"><div class="arch-node" style="border-color: rgba(96, 165, 250, 0.333); background: rgba(96, 165, 250, 0.067); color: rgb(96, 165, 250);"><span>👤</span><span>Business Analyst</span></div><div class="arch-node" style="border-color: rgba(96, 165, 250, 0.333); background: rgba(96, 165, 250, 0.067); color: rgb(96, 165, 250);"><span>👤</span><span>Solution Architect</span></div><div class="arch-node" style="border-color: rgba(96, 165, 250, 0.333); background: rgba(96, 165, 250, 0.067); color: rgb(96, 165, 250);"><span>👤</span><span>Architecture Governance Committee</span></div><div class="arch-node" style="border-color: rgba(96, 165, 250, 0.333); background: rgba(96, 165, 250, 0.067); color: rgb(96, 165, 250);"><span>👤</span><span>Procurement Manager</span></div><div class="arch-node" style="border-color: rgba(96, 165, 250, 0.333); background: rgba(96, 165, 250, 0.067); color: rgb(96, 165, 250);"><span>👤</span><span>Implementation Partner</span></div><div class="arch-node" style="border-color: rgba(96, 165, 250, 0.333); background: rgba(96, 165, 250, 0.067); color: rgb(96, 165, 250);"><span>👤</span><span>Operations Engineer</span></div><div class="arch-node" style="border-color: rgba(45, 212, 191, 0.333); background: rgba(45, 212, 191, 0.067); color: rgb(45, 212, 191);"><span>⬡</span><span>Requirements Portal</span></div><div class="arch-node" style="border-color: rgba(45, 212, 191, 0.333); background: rgba(45, 212, 191, 0.067); color: rgb(45, 212, 191);"><span>⬡</span><span>AI Browser Agent</span></div><div class="arch-node" style="border-color: rgba(45, 212, 191, 0.333); background: rgba(45, 212, 191, 0.067); color: rgb(45, 212, 191);"><span>⬡</span><span>EA Tool</span></div></div></div><div class="tier-section"><div class="tier-label">Agent Network (AI)</div><div class="tier-row"><div class="arch-node" style="border-color: rgba(167, 139, 250, 0.333); background: rgba(167, 139, 250, 0.067); color: rgb(167, 139, 250);"><span>◉</span><span>UC-01 Goal Formation Coach</span></div><div class="arch-node" style="border-color: rgba(167, 139, 250, 0.333); background: rgba(167, 139, 250, 0.067); color: rgb(167, 139, 250);"><span>◉</span><span>UC-02 Requirements Quality Gate</span></div><div class="arch-node" style="border-color: rgba(167, 139, 250, 0.333); background: rgba(167, 139, 250, 0.067); color: rgb(167, 139, 250);"><span>◉</span><span>UC-03 Traceability Fabric</span></div><div class="arch-node" style="border-color: rgba(167, 139, 250, 0.333); background: rgba(167, 139, 250, 0.067); color: rgb(167, 139, 250);"><span>◉</span><span>UC-04 Estate Discovery Agent</span></div><div class="arch-node" style="border-color: rgba(167, 139, 250, 0.333); background: rgba(167, 139, 250, 0.067); color: rgb(167, 139, 250);"><span>◉</span><span>UC-05 Design Advisory Agent</span></div><div class="arch-node" style="border-color: rgba(167, 139, 250, 0.333); background: rgba(167, 139, 250, 0.067); color: rgb(167, 139, 250);"><span>◉</span><span>UC-06 Document Generation Agent</span></div><div class="arch-node" style="border-color: rgba(167, 139, 250, 0.333); background: rgba(167, 139, 250, 0.067); color: rgb(167, 139, 250);"><span>◉</span><span>UC-07 Governance Verification Agent</span></div><div class="arch-node" style="border-color: rgba(167, 139, 250, 0.333); background: rgba(167, 139, 250, 0.067); color: rgb(167, 139, 250);"><span>◉</span><span>UC-08 Procurement Intelligence Agent</span></div><div class="arch-node" style="border-color: rgba(167, 139, 250, 0.333); background: rgba(167, 139, 250, 0.067); color: rgb(167, 139, 250);"><span>◉</span><span>UC-09 Drift Detection Agent</span></div><div class="arch-node" style="border-color: rgba(167, 139, 250, 0.333); background: rgba(167, 139, 250, 0.067); color: rgb(167, 139, 250);"><span>◉</span><span>UC-10 Operational Intelligence Agent</span></div></div></div><div class="tier-section"><div class="tier-label">Platforms &amp; Systems of Record</div><div class="tier-row"><div class="arch-node" style="border-color: rgba(52, 211, 153, 0.333); background: rgba(52, 211, 153, 0.067); color: rgb(52, 211, 153);"><span>▣</span><span>ServiceNow</span></div><div class="arch-node" style="border-color: rgba(52, 211, 153, 0.333); background: rgba(52, 211, 153, 0.067); color: rgb(52, 211, 153);"><span>▣</span><span>Dynatrace</span></div><div class="arch-node" style="border-color: rgba(52, 211, 153, 0.333); background: rgba(52, 211, 153, 0.067); color: rgb(52, 211, 153);"><span>▣</span><span>LLM API</span></div><div class="arch-node" style="border-color: rgba(52, 211, 153, 0.333); background: rgba(52, 211, 153, 0.067); color: rgb(52, 211, 153);"><span>▣</span><span>Jira / Confluence</span></div><div class="arch-node" style="border-color: rgba(52, 211, 153, 0.333); background: rgba(52, 211, 153, 0.067); color: rgb(52, 211, 153);"><span>▣</span><span>SharePoint</span></div></div></div><div class="fabric-tier">
-    <div class="fabric-tier-header">
-      <div class="fabric-tier-icon">◈</div>
-      <div class="fabric-tier-title">Knowledge Fabric</div>
-      <div class="fabric-tier-subtitle">Emergent output of the agent network · not a repository · not maintained by humans</div>
-    </div>
-    <div class="fabric-sublayers">
-      <div class="fabric-sublayer" onclick="archShowDetail(&#39;kf_estate&#39;)" style="cursor:pointer">
-        <div class="fsl-label">Live State</div>
-        <div class="fsl-title">Live Estate Map</div>
-        <div class="fsl-text">Always-current topology of the estate, produced by continuous Dynatrace–CMDB reconciliation. Replaces stale architecture documentation as the ground truth for design.</div>
-        <div class="fsl-agents">◉ Produced by UC-04 · consumed by UC-05, UC-09, UC-10</div>
-      </div>
-      <div class="fabric-sublayer" onclick="archShowDetail(&#39;kf_trace&#39;)" style="cursor:pointer">
-        <div class="fsl-label">Traceability</div>
-        <div class="fsl-title">Traceability Matrix</div>
-        <div class="fsl-text">Live chain linking business goals → requirements → design decisions → governance approvals → implementation artefacts → operational CIs. Broken links flagged automatically.</div>
-        <div class="fsl-agents">◉ Maintained by UC-03 · read by UC-05, UC-06, UC-08</div>
-      </div>
-      <div class="fabric-sublayer" onclick="archShowDetail(&#39;kf_docs&#39;)" style="cursor:pointer">
-        <div class="fsl-label">Governance Record</div>
-        <div class="fsl-title">Governance Documents</div>
-        <div class="fsl-text">Security, application, data, and infrastructure governance documents generated from verified structured data — not written from human memory. Pre-screened before committee review.</div>
-        <div class="fsl-agents">◉ Generated by UC-06 · verified by UC-07 · referenced by UC-08</div>
-      </div>
-    </div>
-  </div></div>
+            <div class="diag-layer active" id="svg-tiers"></div>
             <div class="diag-layer" id="svg-flow"></div>
             <div class="diag-layer" id="svg-hub" style="padding:0"><svg id="hub-svg"></svg></div>
           </div>
@@ -1016,17 +1001,24 @@ body{font-family:'DM Sans',sans-serif;background:#0d1117}
     <!-- PAGE 4: AI IN ACTION -->
     <section class="page-section" id="page-demo">
       <div id="demo-topbar">
-        <button class="demo-tab" onclick="demoSw(1)">01 Requirements Pipeline</button>
+        <button class="demo-tab on" onclick="demoSw(1)">01 Requirements Pipeline</button>
         <button class="demo-tab" onclick="demoSw(2)">02 Design &amp; Governance</button>
-        <button class="demo-tab on" onclick="demoSw(3)">03 Live Operations</button>
+        <button class="demo-tab" onclick="demoSw(3)">03 Live Operations</button>
       </div>
       <div class="demo-content">
 
         <!-- DEMO TAB 1: Requirements Pipeline -->
-        <div class="demo-panel" id="dp1">
+        <div class="demo-panel on" id="dp1">
+          <div style="background:rgba(45,212,191,0.07);border:1px solid rgba(45,212,191,0.28);border-radius:8px;padding:8px 14px;margin-bottom:10px;display:flex;align-items:center;gap:10px">
+            <div style="font-size:13px;color:#2dd4bf;flex-shrink:0">◎</div>
+            <div>
+              <span style="font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#2dd4bf">UC-00 Programme Orchestration Agent</span>
+              <span style="font-size:10.5px;color:#7d8590;margin-left:8px">dispatched this pipeline · stage: <b style="color:#e6edf3">Requirements Formation</b> · awaiting quality gate signal to unlock next stage</span>
+            </div>
+          </div>
           <div class="demo-subbar">
             <div class="pr"><b>Pipeline:</b> Vague business goal enters the system, is coached into a measurable requirement, quality-gated against principles from the Knowledge Base, and traced before an architect ever sees it.</div>
-            <div class="demo-tech-pill">UC-01 · UC-02 · UC-03 · Knowledge Base · LLM API · Jira</div>
+            <div class="demo-tech-pill">UC-00 · UC-01 · UC-02 · UC-03 · Knowledge Base · LLM API · Jira</div>
           </div>
           <div class="demo-th">
             <div><div class="demo-th-title">Requirements formation pipeline</div><div class="demo-th-sub">Input: unstructured goal statement — Output: traced, quality-gated requirement stored in Knowledge Base</div></div>
@@ -1092,13 +1084,24 @@ body{font-family:'DM Sans',sans-serif;background:#0d1117}
             <div style="font-size:18px;flex-shrink:0;margin-top:1px">💡</div>
             <div><div class="insight-lb">Key insight</div><div class="insight-tx">Manual requirements iteration: <b>2–5 days per cycle</b>. Automated pipeline: <b>under 3 minutes</b>. Quality score improves from <b>0% → 88%</b> before the requirement reaches a Solution Architect — eliminating the most common cause of design rework.</div></div>
           </div>
+          <div style="background:rgba(45,212,191,0.06);border:1px solid rgba(45,212,191,0.22);border-radius:7px;padding:8px 14px;margin-top:10px;display:flex;align-items:center;gap:10px">
+            <div style="font-size:12px;color:#2dd4bf;flex-shrink:0">◎</div>
+            <div style="font-size:10.5px;color:#7d8590"><span style="color:#2dd4bf;font-weight:700">UC-00 receives stage-complete event</span> — quality gate passed, requirement traced · unlocking <b style="color:#e6edf3">Architecture Design</b> stage · approval gate: Solution Architect sign-off required before UC-04 is dispatched</div>
+          </div>
         </div>
 
         <!-- DEMO TAB 2: Design & Governance -->
         <div class="demo-panel" id="dp2">
+          <div style="background:rgba(45,212,191,0.07);border:1px solid rgba(45,212,191,0.28);border-radius:8px;padding:8px 14px;margin-bottom:10px;display:flex;align-items:center;gap:10px">
+            <div style="font-size:13px;color:#2dd4bf;flex-shrink:0">◎</div>
+            <div>
+              <span style="font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#2dd4bf">UC-00 Programme Orchestration Agent</span>
+              <span style="font-size:10.5px;color:#7d8590;margin-left:8px">dispatched this pipeline · stage: <b style="color:#e6edf3">Architecture Design → Governance</b> · approval gate passed by Solution Architect · awaiting governance verification signal</span>
+            </div>
+          </div>
           <div class="demo-subbar">
             <div class="pr"><b>Pipeline:</b> Traced requirement triggers estate discovery, design advisory, and a dedicated <b style="color:#c4b5fd">Impact Analysis</b> step — scoring the design against the live estate and <b style="color:#c4b5fd">Architecture Principles</b> from the Knowledge Base — before documents are generated and governance pre-screening runs.</div>
-            <div class="demo-tech-pill">UC-04 · UC-05 · Impact Analysis · UC-06 · UC-07 · Knowledge Base · Dynatrace · ServiceNow · SharePoint</div>
+            <div class="demo-tech-pill">UC-00 · UC-04 · UC-05 · Impact Analysis · UC-06 · UC-07 · Knowledge Base · Dynatrace · ServiceNow · SharePoint</div>
           </div>
           <div class="demo-th">
             <div><div class="demo-th-title">Design &amp; governance pipeline</div><div class="demo-th-sub">From approved requirement → impact-scored design → principles-verified governance submission</div></div>
@@ -1107,32 +1110,32 @@ body{font-family:'DM Sans',sans-serif;background:#0d1117}
           <div class="demo-grid-2">
             <div>
               <!-- Node steps -->
-              <div class="node-step dn" id="n2_1">
-                <div class="ns-hd"><div class="ns-num">1</div><div class="ns-title">UC-04 Estate Discovery Agent</div><div class="ns-status ss2 d" id="n2x1">✓</div></div>
+              <div class="node-step" id="n2_1">
+                <div class="ns-hd"><div class="ns-num">1</div><div class="ns-title">UC-04 Estate Discovery Agent</div><div class="ns-status ss2 w" id="n2x1">—</div></div>
                 <div class="ns-body">Queries Dynatrace live topology + ServiceNow CMDB → reconciles discrepancies → outputs current estate map
-                  <div id="n2o1" class="outcome-box vis" style="margin-top:6px">
+                  <div id="n2o1" class="outcome-box" style="margin-top:6px">
                     <div class="ob-badges"><span class="badge2 bt2">312 CIs reconciled</span><span class="badge2 br2">7 CMDB gaps flagged</span><span class="badge2 bc2">Estate map updated</span></div>
                   </div>
                 </div>
               </div>
               <div class="ns-conn"></div>
-              <div class="node-step dn" id="n2_2">
-                <div class="ns-hd"><div class="ns-num">2</div><div class="ns-title">UC-05 Design Advisory Agent</div><div class="ns-status ss2 d" id="n2x2">✓</div></div>
+              <div class="node-step" id="n2_2">
+                <div class="ns-hd"><div class="ns-num">2</div><div class="ns-title">UC-05 Design Advisory Agent</div><div class="ns-status ss2 w" id="n2x2">—</div></div>
                 <div class="ns-body">Applies Architecture Principles Library to requirements + estate map → generates design options with compliance scores
-                  <div id="n2o2" class="outcome-box vis" style="margin-top:6px">
+                  <div id="n2o2" class="outcome-box" style="margin-top:6px">
                     <div class="ob-badges"><span class="badge2 bg2">3 design options generated</span><span class="badge2 bt2">Principles checked from Knowledge Base</span><span class="badge2 br2">1 violation flagged pre-governance</span></div>
                   </div>
                 </div>
               </div>
               <div class="ns-conn"></div>
-              <div class="node-step dn" id="n2_ia">
+              <div class="node-step" id="n2_ia">
                 <div class="ns-hd">
                   <div class="ns-num" style="background:rgba(124,58,237,0.18);border-color:rgba(124,58,237,0.5);color:#c4b5fd">IA</div>
                   <div class="ns-title">Impact Analysis Agent <span style="font-size:9.5px;font-weight:400;color:#028090;margin-left:6px">— NEW</span></div>
-                  <div class="ns-status ss2 d" id="n2xia">✓</div>
+                  <div class="ns-status ss2 w" id="n2xia">—</div>
                 </div>
                 <div class="ns-body">Scores the chosen design option against live estate topology and all 24 architecture principles — produces a structured impact report before documents are generated
-                  <div id="n2oia" class="outcome-box vis" style="margin-top:6px">
+                  <div id="n2oia" class="outcome-box" style="margin-top:6px">
                     <div class="ob-label" style="color:#c4b5fd">Impact report</div>
                     <div style="font-size:10.5px;display:flex;flex-direction:column;gap:4px;margin-bottom:6px">
                       <div style="display:flex;align-items:center;gap:5px"><span style="color:var(--grn)">✓</span><span style="color:var(--dm)">Estate impact — <b style="color:#e6edf3">3 CIs affected · no decommission conflicts</b></span></div>
@@ -1149,23 +1152,23 @@ body{font-family:'DM Sans',sans-serif;background:#0d1117}
                 </div>
               </div>
               <div class="ns-conn"></div>
-              <div class="node-step dn" id="n2_3">
-                <div class="ns-hd"><div class="ns-num">3</div><div class="ns-title">UC-06 Document Generation Agent</div><div class="ns-status ss2 d" id="n2x3">✓</div></div>
+              <div class="node-step" id="n2_3">
+                <div class="ns-hd"><div class="ns-num">3</div><div class="ns-title">UC-06 Document Generation Agent</div><div class="ns-status ss2 w" id="n2x3">—</div></div>
                 <div class="ns-body">Assembles security, application, data, and infrastructure governance documents from structured design data — no manual authoring
-                  <div id="n2o3" class="outcome-box vis" style="margin-top:6px">
+                  <div id="n2o3" class="outcome-box" style="margin-top:6px">
                     <div class="ob-badges"><span class="badge2 bg2">4 documents generated</span><span class="badge2 bt2">SharePoint published</span><span class="badge2 bc2">Templates auto-populated</span></div>
                   </div>
                 </div>
               </div>
               <div class="ns-conn"></div>
-              <div class="node-step dn" id="n2_4">
+              <div class="node-step" id="n2_4">
                 <div class="ns-hd">
                   <div class="ns-num" style="background:rgba(0,51,160,0.2);border-color:rgba(0,51,160,0.5);color:#7aaaf0">V</div>
                   <div class="ns-title">UC-07 Governance Verification Agent</div>
-                  <div class="ns-status ss2 d" id="n2x4">✓</div>
+                  <div class="ns-status ss2 w" id="n2x4">—</div>
                 </div>
                 <div class="ns-body">Pre-screens all documents against principles and regulatory frameworks → produces exceptions report before committee review
-                  <div id="n2o4" class="outcome-box vis" style="margin-top:6px">
+                  <div id="n2o4" class="outcome-box" style="margin-top:6px">
                     <div style="font-size:10.5px;display:flex;flex-direction:column;gap:4px">
                       <div style="display:flex;align-items:center;gap:5px"><span style="color:var(--grn)">✓</span><span style="color:var(--dm)">Security architecture — <b style="color:var(--grn)">No exceptions</b></span></div>
                       <div style="display:flex;align-items:center;gap:5px"><span style="color:var(--grn)">✓</span><span style="color:var(--dm)">Data architecture — <b style="color:var(--grn)">No exceptions</b></span></div>
@@ -1181,8 +1184,8 @@ body{font-family:'DM Sans',sans-serif;background:#0d1117}
             <div>
               <div class="demo-card" style="position:sticky;top:0">
                 <div class="demo-ct"><div class="demo-dot"></div>Pipeline context</div>
-                <div id="n2-empty" style="color: var(--dm); font-size: 11px; text-align: center; padding: 24px 0px; display: none;"><div style="font-size:22px;opacity:.28;margin-bottom:5px">📄</div>Context loads as pipeline runs</div>
-                <div id="n2-ctx" class="outcome-box vis">
+                <div id="n2-empty" style="color:var(--dm);font-size:11px;text-align:center;padding:24px 0"><div style="font-size:22px;opacity:.28;margin-bottom:5px">📄</div>Context loads as pipeline runs</div>
+                <div id="n2-ctx" class="outcome-box">
                   <div style="font-size:10.5px;color:var(--dm);margin-bottom:8px">Sources used across pipeline</div>
                   <div class="ctx-chunk"><div class="ctx-chunk-title">📡 Dynatrace Topology</div><div class="ctx-chunk-body">312 CIs · last sync 4 min ago · 7 CMDB discrepancies detected</div></div>
                   <div class="ctx-chunk"><div class="ctx-chunk-title">🏛 Architecture Principles Library</div><div class="ctx-chunk-body">24 principles loaded · P-14 API-first, P-07 Zero Trust, P-18 Cloud-native evaluated</div></div>
@@ -1191,8 +1194,8 @@ body{font-family:'DM Sans',sans-serif;background:#0d1117}
                   <div class="ctx-chunk" style="border:1px solid rgba(224,82,82,0.4)"><div class="ctx-chunk-title" style="color:#f08080">⚠ Principle Conflict Detected</div><div class="ctx-chunk-body">P-14 (API-first integration) — not addressed in application document. UC-07 flagged before committee.</div></div>
                   <div style="margin-top:9px">
                     <div class="pbar-wrap">
-                      <div class="pbar-row"><span>Governance readiness</span><b id="d2-pct">75%</b></div>
-                      <div class="pbar-track"><div class="pbar-fill" id="d2-bar" style="width: 75%;"></div></div>
+                      <div class="pbar-row"><span>Governance readiness</span><b id="d2-pct">0%</b></div>
+                      <div class="pbar-track"><div class="pbar-fill" id="d2-bar"></div></div>
                     </div>
                   </div>
                 </div>
@@ -1203,13 +1206,24 @@ body{font-family:'DM Sans',sans-serif;background:#0d1117}
             <div style="font-size:18px;flex-shrink:0;margin-top:1px">💡</div>
             <div><div class="insight-lb">Key insight</div><div class="insight-tx">Manual document production, impact assessment and governance pre-check: <b>1–2 weeks</b>. Automated pipeline with dedicated impact analysis: <b>under 25 minutes</b>. Governance committee sees not just what is proposed but <b>exactly what it changes, what it affects, and which principles it conflicts with</b> — before a single document is opened.</div></div>
           </div>
+          <div style="background:rgba(45,212,191,0.06);border:1px solid rgba(45,212,191,0.22);border-radius:7px;padding:8px 14px;margin-top:10px;display:flex;align-items:flex-start;gap:10px">
+            <div style="font-size:12px;color:#2dd4bf;flex-shrink:0;margin-top:1px">◎</div>
+            <div style="font-size:10.5px;color:#7d8590;line-height:1.6"><span style="color:#2dd4bf;font-weight:700">UC-00 receives governance verification signal</span> — 1 principle exception (P-14) flagged · exception routing decision: <b style="color:#e6edf3">loop back to UC-05</b> for design revision before committee submission · if exception approved by architect, UC-00 routes directly to Governance Committee approval gate</div>
+          </div>
         </div>
 
         <!-- DEMO TAB 3: Live Operations -->
-        <div class="demo-panel on" id="dp3">
+        <div class="demo-panel" id="dp3">
+          <div style="background:rgba(45,212,191,0.07);border:1px solid rgba(45,212,191,0.28);border-radius:8px;padding:8px 14px;margin-bottom:10px;display:flex;align-items:center;gap:10px">
+            <div style="font-size:13px;color:#2dd4bf;flex-shrink:0">◎</div>
+            <div>
+              <span style="font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#2dd4bf">UC-00 Programme Orchestration Agent</span>
+              <span style="font-size:10.5px;color:#7d8590;margin-left:8px">monitoring: <b style="color:#e6edf3">Live Operations</b> stage · UC-09 drift watch active · UC-10 incident enrichment active · routing incoming events to appropriate agent</span>
+            </div>
+          </div>
           <div class="demo-subbar">
             <div class="pr"><b>Pipeline:</b> A Dynatrace alert fires. The system detects whether it represents design drift or a business-impacting incident — and acts accordingly.</div>
-            <div class="demo-tech-pill">UC-09 · UC-10 · Dynatrace · ServiceNow</div>
+            <div class="demo-tech-pill">UC-00 · UC-09 · UC-10 · Dynatrace · ServiceNow</div>
           </div>
           <div class="demo-th">
             <div><div class="demo-th-title">Live operations — drift &amp; incident intelligence</div><div class="demo-th-sub">Monitoring event → enriched ITSM response with business context</div></div>
@@ -1225,34 +1239,34 @@ body{font-family:'DM Sans',sans-serif;background:#0d1117}
                   <div style="font-size:10.5px;color:var(--dm);margin-top:1px">CI: APP-GW-003 · Environment: Production · Severity: HIGH</div>
                 </div>
               </div>
-              <div class="node-step dn" id="n3_1">
-                <div class="ns-hd"><div class="ns-num">1</div><div class="ns-title">UC-09 Drift Detection Agent</div><div class="ns-status ss2 d" id="n3x1">✓</div></div>
+              <div class="node-step" id="n3_1">
+                <div class="ns-hd"><div class="ns-num">1</div><div class="ns-title">UC-09 Drift Detection Agent</div><div class="ns-status ss2 w" id="n3x1">—</div></div>
                 <div class="ns-body">Compares live topology against approved design baseline — checks whether change was authorised
-                  <div id="n3o1" class="outcome-box vis" style="margin-top:6px">
+                  <div id="n3o1" class="outcome-box" style="margin-top:6px">
                     <div class="ob-badges"><span class="badge2 bg2">No unauthorised drift detected</span><span class="badge2 bc2">Matches approved baseline</span></div>
                     <div style="font-size:10.5px;color:var(--dm);margin-top:5px">This is a performance event, not a topology change. Routing to UC-10.</div>
                   </div>
                 </div>
               </div>
               <div class="ns-conn"></div>
-              <div class="node-step dn" id="n3_2">
-                <div class="ns-hd"><div class="ns-num">2</div><div class="ns-title">UC-10 Operational Intelligence Agent</div><div class="ns-status ss2 d" id="n3x2">✓</div></div>
+              <div class="node-step" id="n3_2">
+                <div class="ns-hd"><div class="ns-num">2</div><div class="ns-title">UC-10 Operational Intelligence Agent</div><div class="ns-status ss2 w" id="n3x2">—</div></div>
                 <div class="ns-body">Correlates CI with business process map from Live Estate Map — identifies which services and processes are affected
-                  <div id="n3o2" class="outcome-box vis" style="margin-top:6px">
+                  <div id="n3o2" class="outcome-box" style="margin-top:6px">
                     <div style="font-size:10.5px;color:var(--dm);margin-bottom:5px">Business process impact:</div>
                     <div class="ob-badges"><span class="badge2 br2">Change Request submission degraded</span><span class="badge2 br2">Approval workflow latency +340ms</span><span class="badge2 by2">3 downstream services at risk</span></div>
                   </div>
                 </div>
               </div>
               <div class="ns-conn"></div>
-              <div class="node-step dn" id="n3_3">
+              <div class="node-step" id="n3_3">
                 <div class="ns-hd">
                   <div class="ns-num" style="background:var(--grn-dim);border-color:rgba(46,204,113,0.45);color:var(--grn)">✓</div>
                   <div class="ns-title">Enriched ServiceNow incident created</div>
-                  <div class="ns-status ss2 d" id="n3x3">✓</div>
+                  <div class="ns-status ss2 w" id="n3x3">—</div>
                 </div>
                 <div class="ns-body">
-                  <div id="n3o3" class="outcome-box vis" style="margin-top:6px">
+                  <div id="n3o3" class="outcome-box" style="margin-top:6px">
                     <div class="verified-box">
                       <b>INC0048271</b> — app-gateway-prod-03 CPU degradation<br>
                       <span style="font-size:10.5px;color:var(--dm)">Business impact: Change Request submission degraded · 3 services at risk · Approval SLA at risk<br>
@@ -1270,16 +1284,16 @@ body{font-family:'DM Sans',sans-serif;background:#0d1117}
             <div>
               <div class="demo-card" style="position:sticky;top:0">
                 <div class="demo-ct"><div class="demo-dot"></div>Live estate context</div>
-                <div id="n3-empty" style="color: var(--dm); font-size: 11px; text-align: center; padding: 24px 0px; display: none;"><div style="font-size:22px;opacity:.28;margin-bottom:5px">📡</div>Awaiting alert processing…</div>
-                <div id="n3-ctx" class="outcome-box vis">
+                <div id="n3-empty" style="color:var(--dm);font-size:11px;text-align:center;padding:24px 0"><div style="font-size:22px;opacity:.28;margin-bottom:5px">📡</div>Awaiting alert processing…</div>
+                <div id="n3-ctx" class="outcome-box">
                   <div style="font-size:10.5px;color:var(--dm);margin-bottom:7px">Context loaded from Live Estate Map</div>
                   <div class="ctx-chunk"><div class="ctx-chunk-title">🗺 CI Dependency Map</div><div class="ctx-chunk-body">app-gateway-prod-03 → change-mgmt-svc → approval-workflow-engine · 3 downstream consumers</div></div>
                   <div class="ctx-chunk"><div class="ctx-chunk-title">📊 Approved Design Baseline</div><div class="ctx-chunk-body">Gateway pool: 3 nodes approved. Current: 3 nodes. No drift. Last authorised change: CR-4482 (14 days ago)</div></div>
                   <div class="ctx-chunk"><div class="ctx-chunk-title">⚙ CMDB Record</div><div class="ctx-chunk-body">APP-GW-003 · Class: Application Server · Owner: Platform Engineering · SLA: Gold</div></div>
                   <div style="margin-top:10px">
                     <div class="pbar-wrap">
-                      <div class="pbar-row"><span>Mean time to context</span><b id="d3-pct">42 sec</b></div>
-                      <div class="pbar-track"><div class="pbar-fill" id="d3-bar" style="width: 100%;"></div></div>
+                      <div class="pbar-row"><span>Mean time to context</span><b id="d3-pct">0 sec</b></div>
+                      <div class="pbar-track"><div class="pbar-fill" id="d3-bar"></div></div>
                     </div>
                     <div style="font-size:10px;color:var(--dm);margin-top:4px;text-align:center">vs ~15 min manual investigation</div>
                   </div>
@@ -1290,6 +1304,10 @@ body{font-family:'DM Sans',sans-serif;background:#0d1117}
           <div class="insight">
             <div style="font-size:18px;flex-shrink:0;margin-top:1px">💡</div>
             <div><div class="insight-lb">Key insight</div><div class="insight-tx">Without agent enrichment, engineers spend <b>10–15 minutes</b> manually tracing the business impact of a CI alert — if they trace it at all. With UC-10, business context is attached to the incident <b>before the engineer opens the ticket</b>. The question shifts from "what broke?" to "what should I do about it?"</div></div>
+          </div>
+          <div style="background:rgba(45,212,191,0.06);border:1px solid rgba(45,212,191,0.22);border-radius:7px;padding:8px 14px;margin-top:10px;display:flex;align-items:flex-start;gap:10px">
+            <div style="font-size:12px;color:#2dd4bf;flex-shrink:0;margin-top:1px">◎</div>
+            <div style="font-size:10.5px;color:#7d8590;line-height:1.6"><span style="color:#2dd4bf;font-weight:700">UC-00 receives incident enrichment signal</span> — no drift detected, performance event routed to UC-10 · incident INC0048271 created with business context · programme state updated · if incident indicates systemic issue UC-00 triggers UC-04 estate re-reconciliation</div>
           </div>
         </div>
 
@@ -1355,6 +1373,7 @@ const PERSONAS = [
 // DATA — AGENT NETWORK
 // ════════════════════════════════════════════════════════════
 const NET_NODES = {
+  uc00:{ id:'uc00', label:'UC-00\nOrchestration Agent', type:'ORCHESTRATOR', color:'#2dd4bf', phase:0 },
   uc01:{ id:'uc01', label:'UC-01\nGoal Formation Coach', type:'AGENT', color:'#a78bfa', phase:1 },
   uc02:{ id:'uc02', label:'UC-02\nRequirements Quality Gate', type:'AGENT', color:'#a78bfa', phase:1 },
   uc03:{ id:'uc03', label:'UC-03\nTraceability Fabric', type:'AGENT', color:'#a78bfa', phase:1 },
@@ -1374,6 +1393,15 @@ const NET_NODES = {
 };
 
 const NET_CONNECTIONS = [
+  { from:'uc00', to:'uc01', label:'Dispatch goal stage', input:'Programme context and stage trigger', output:'UC-01 activated for goal formation' },
+  { from:'uc00', to:'uc02', label:'Dispatch req. stage', input:'Approved goals from UC-01', output:'UC-02 activated for requirements quality gate' },
+  { from:'uc00', to:'uc04', label:'Dispatch estate stage', input:'Stage trigger with programme context', output:'UC-04 activated for estate discovery' },
+  { from:'uc00', to:'uc06', label:'Dispatch doc generation', input:'Approved design from UC-05', output:'UC-06 activated for document generation' },
+  { from:'uc00', to:'uc09', label:'Dispatch drift watch', input:'Approved design baseline', output:'UC-09 begins continuous drift monitoring' },
+  { from:'uc01', to:'uc00', label:'Stage complete', input:'Goal register approved by sponsor', output:'Lifecycle state updated — requirements stage unlocked' },
+  { from:'uc02', to:'uc00', label:'Gate result', input:'Quality score and pass/fail signal', output:'Proceed to traceability or loop back to BA' },
+  { from:'uc07', to:'uc00', label:'Governance result', input:'Pre-review compliance report and exceptions', output:'Route to committee or loop back to UC-05 for redesign' },
+  { from:'uc09', to:'uc00', label:'Drift alert', input:'Topology deviation detected', output:'Orchestrator decides CMDB update vs design review' },
   { from:'uc01', to:'uc02', label:'Goal statements', input:'Structured goal statements with measurability criteria', output:'Quality-gated requirements with goal linkage' },
   { from:'uc02', to:'uc03', label:'Requirements', input:'Quality-assessed requirements', output:'Traceability matrix requirements layer populated' },
   { from:'uc03', to:'uc05', label:'Traceability context', input:'Requirements traceability chain', output:'Design decisions anchored to traceable requirements' },
@@ -1646,6 +1674,7 @@ let netCanvas, netCtx, netNodes2d = {}, netAnimFrame = null, netSelectedConn = n
 
 // Extended node data for detail panel
 const NET_NODE_DETAIL = {
+  uc00:{ inputs:['Stage completion events from all agents','Human approval signals','Exception and loop-back triggers','Programme context from Knowledge Base'], outputs:['Stage dispatch signals to agents','Approval gate requests to stakeholders','Exception routing decisions','Real-time programme state dashboard'], tools:['Event bus / ServiceNow workflow','Claude API','Knowledge Base','Programme state store'], phase:'Cross-cutting — all phases', type:'ORCHESTRATOR' },
   uc01:{ inputs:['Business case drafts','Strategic objective documents','Prior project outcomes'], outputs:['Structured goal statements','Measurability score','Gap analysis report'], tools:['Claude API','Microsoft 365'], phase:'Phase 1 — Foundation', type:'ADVISORY' },
   uc02:{ inputs:['Requirements spreadsheets','Jira epics/stories','NFR templates'], outputs:['Quality score','Ambiguity flags','NFR gap report','Resolution suggestions'], tools:['Claude API','Jira','Confluence'], phase:'Phase 1 — Foundation', type:'ADVISORY' },
   uc03:{ inputs:['Goals (UC-01 output)','Requirements (UC-02 output)','Design documents','Governance records'], outputs:['Live traceability matrix','Broken link alerts','Audit trail for governance'], tools:['Claude API','Jira','ServiceNow','SharePoint'], phase:'Phase 1 — Foundation', type:'HYBRID' },
@@ -1687,13 +1716,20 @@ function netLayoutNodes() {
   const W = netCanvas.width, H = netCanvas.height;
   const agents = Object.values(NET_NODES).filter(n => n.type === 'AGENT');
   const platforms = Object.values(NET_NODES).filter(n => n.type === 'PLATFORM');
-  const cols = 5, rowH = H / 3;
+  const orchestrators = Object.values(NET_NODES).filter(n => n.type === 'ORCHESTRATOR');
+  const cols = 5;
+  // UC-00 — moved down slightly
+  orchestrators.forEach(n => {
+    netNodes2d[n.id] = { x: W * 0.5, y: H * 0.18, r: 36 };
+  });
+  // Agents — two rows moved up, evenly spaced between UC-00 and platforms
   agents.forEach((n, i) => {
     const col = i % cols, row = Math.floor(i / cols);
-    netNodes2d[n.id] = { x: (col + 0.5) * (W * 0.82 / cols) + W * 0.09, y: rowH * 0.38 + row * rowH, r: 30 };
+    netNodes2d[n.id] = { x: (col + 0.5) * (W * 0.82 / cols) + W * 0.09, y: H * (0.42 + row * 0.24), r: 30 };
   });
+  // Platforms — same gap below agent row 2
   platforms.forEach((n, i) => {
-    netNodes2d[n.id] = { x: (i + 0.5) * (W / (platforms.length + 1)), y: H * 0.89, r: 22 };
+    netNodes2d[n.id] = { x: (i + 0.5) * (W / (platforms.length + 1)), y: H * 0.90, r: 22 };
   });
 }
 
@@ -1756,13 +1792,25 @@ function netDraw() {
   Object.values(NET_NODES).forEach(n => {
     const pos = netNodes2d[n.id]; if (!pos) return;
     const isSelected = netSelectedNode === n.id;
+    const isOrchestrator = n.type === 'ORCHESTRATOR';
     ctx.save();
+    // Outer ring for orchestrator
+    if (isOrchestrator) {
+      ctx.beginPath();
+      ctx.arc(pos.x, pos.y, pos.r + 8, 0, Math.PI * 2);
+      ctx.strokeStyle = n.color + '44';
+      ctx.lineWidth = 1;
+      ctx.setLineDash([4, 3]);
+      ctx.lineDashOffset = -netDashOffset;
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
     ctx.beginPath();
     ctx.arc(pos.x, pos.y, pos.r, 0, Math.PI * 2);
-    ctx.fillStyle = isSelected ? n.color + '44' : n.color + '18';
+    ctx.fillStyle = isSelected ? n.color + '44' : (isOrchestrator ? n.color + '28' : n.color + '18');
     ctx.fill();
     ctx.strokeStyle = n.color;
-    ctx.lineWidth = isSelected ? 2.5 : 1.5;
+    ctx.lineWidth = isSelected ? 2.5 : (isOrchestrator ? 2 : 1.5);
     ctx.stroke();
     if (isSelected) {
       ctx.beginPath();
@@ -1935,8 +1983,9 @@ function closeDrawer() {
 }
 
 function netBuildSidebar() {
+  const orchEl   = document.getElementById('ns-orchestrator');
   const agentsEl = document.getElementById('ns-agents');
-  const platEl = document.getElementById('ns-platforms');
+  const platEl   = document.getElementById('ns-platforms');
   Object.values(NET_NODES).forEach(n => {
     const el = document.createElement('div');
     el.className = 'ns-node';
@@ -1947,7 +1996,9 @@ function netBuildSidebar() {
       closeDrawer();
       netShowNodeDetail(n.id);
     };
-    (n.type === 'AGENT' ? agentsEl : platEl).appendChild(el);
+    if (n.type === 'ORCHESTRATOR') orchEl.appendChild(el);
+    else if (n.type === 'AGENT') agentsEl.appendChild(el);
+    else platEl.appendChild(el);
   });
 }
 
